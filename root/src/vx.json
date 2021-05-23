@@ -1,0 +1,93 @@
+{
+    "created_time": "2021-01-06T08:06:51Z",
+    "files": [
+        {
+            "attachment_folder": "",
+            "created_time": "2021-01-06T08:06:51Z",
+            "id": "0",
+            "modified_time": "2021-01-06T08:06:51Z",
+            "name": "ABOUT.md",
+            "tags": [
+            ]
+        },
+        {
+            "attachment_folder": "",
+            "created_time": "2021-01-06T08:06:51Z",
+            "id": "0",
+            "modified_time": "2021-01-06T08:06:51Z",
+            "name": "chapter_1.md",
+            "tags": [
+            ]
+        },
+        {
+            "attachment_folder": "",
+            "created_time": "2021-01-06T08:06:51Z",
+            "id": "0",
+            "modified_time": "2021-01-06T08:06:51Z",
+            "name": "chapter_2.md",
+            "tags": [
+            ]
+        },
+        {
+            "attachment_folder": "",
+            "created_time": "2021-01-06T08:06:51Z",
+            "id": "0",
+            "modified_time": "2021-01-06T08:06:51Z",
+            "name": "README.md",
+            "tags": [
+            ]
+        },
+        {
+            "attachment_folder": "",
+            "created_time": "2021-01-06T08:06:51Z",
+            "id": "0",
+            "modified_time": "2021-01-06T08:06:51Z",
+            "name": "SUMMARY.md",
+            "tags": [
+            ]
+        }
+    ],
+    "folders": [
+        {
+            "name": "about"
+        },
+        {
+            "name": "aop"
+        },
+        {
+            "name": "bloomfilter"
+        },
+        {
+            "name": "cache"
+        },
+        {
+            "name": "datafeature"
+        },
+        {
+            "name": "scheduler"
+        },
+        {
+            "name": "security"
+        },
+        {
+            "name": "sqldriver"
+        },
+        {
+            "name": "sqlx"
+        },
+        {
+            "name": "stream"
+        },
+        {
+            "name": "verification-random"
+        },
+        {
+            "name": "web"
+        },
+        {
+            "name": "jdk"
+        }
+    ],
+    "id": "0",
+    "version": "1"
+}

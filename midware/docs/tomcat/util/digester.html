@@ -1,0 +1,677 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>startup from xml - mid ware</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">前言</a></li><li class="chapter-item expanded "><a href="../../tomcat/index.html"><strong aria-hidden="true">1.</strong> tomcat</a></li><li class="chapter-item expanded "><a href="../../catalina/index.html"><strong aria-hidden="true">2.</strong> catalina</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tomcat/util/digester.html" class="active"><strong aria-hidden="true">2.1.</strong> startup from xml</a></li></ol></li><li class="chapter-item expanded "><a href="../../ABOUT.html">关于</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">mid ware</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#digester" id="digester">digester</a></h2>
+<blockquote>
+<p>org.apache.tomcat.util.digester;</p>
+</blockquote>
+<p>用于解析xml配置文件</p>
+<p>例如：server.xml</p>
+<pre><code class="language-java">//   org.apache.catalina.startup.Catalina;
+
+	/**
+     * Create and configure the Digester we will be using for startup.
+     * @return the main digester to parse server.xml
+     */
+    protected Digester createStartDigester() {
+        // Initialize the digester
+        Digester digester = new Digester();
+        digester.setValidating(false);
+        digester.setRulesValidation(true);
+        Map&lt;Class&lt;?&gt;, List&lt;String&gt;&gt; fakeAttributes = new HashMap&lt;&gt;();
+        // Ignore className on all elements
+        List&lt;String&gt; objectAttrs = new ArrayList&lt;&gt;();
+        objectAttrs.add(&quot;className&quot;);
+        fakeAttributes.put(Object.class, objectAttrs);
+        // Ignore attribute added by Eclipse for its internal tracking
+        List&lt;String&gt; contextAttrs = new ArrayList&lt;&gt;();
+        contextAttrs.add(&quot;source&quot;);
+        fakeAttributes.put(StandardContext.class, contextAttrs);
+        // Ignore Connector attribute used internally but set on Server
+        List&lt;String&gt; connectorAttrs = new ArrayList&lt;&gt;();
+        connectorAttrs.add(&quot;portOffset&quot;);
+        fakeAttributes.put(Connector.class, connectorAttrs);
+        digester.setFakeAttributes(fakeAttributes);
+        digester.setUseContextClassLoader(true);
+
+        // 默认为 StandardServer 可以通过classname指定
+        // Configure the actions we will be using
+        digester.addObjectCreate(&quot;Server&quot;,
+                                 &quot;org.apache.catalina.core.StandardServer&quot;,
+                                 &quot;className&quot;);
+        
+        digester.addSetProperties(&quot;Server&quot;);
+        digester.addSetNext(&quot;Server&quot;,
+                            &quot;setServer&quot;,
+                            &quot;org.apache.catalina.Server&quot;);
+		// 创建j2ee 命名Context
+        digester.addObjectCreate(&quot;Server/GlobalNamingResources&quot;,
+                                 &quot;org.apache.catalina.deploy.NamingResourcesImpl&quot;);
+        digester.addSetProperties(&quot;Server/GlobalNamingResources&quot;);
+        digester.addSetNext(&quot;Server/GlobalNamingResources&quot;,
+                            &quot;setGlobalNamingResources&quot;,
+                            &quot;org.apache.catalina.deploy.NamingResourcesImpl&quot;);
+		//生命周期监听器
+        digester.addRule(&quot;Server/Listener&quot;,
+                new ListenerCreateRule(null, &quot;className&quot;));
+        digester.addSetProperties(&quot;Server/Listener&quot;);
+        digester.addSetNext(&quot;Server/Listener&quot;,
+                            &quot;addLifecycleListener&quot;,
+                            &quot;org.apache.catalina.LifecycleListener&quot;);
+		// service 实例
+        digester.addObjectCreate(&quot;Server/Service&quot;,
+                                 &quot;org.apache.catalina.core.StandardService&quot;,
+                                 &quot;className&quot;);
+        digester.addSetProperties(&quot;Server/Service&quot;);
+        digester.addSetNext(&quot;Server/Service&quot;,
+                            &quot;addService&quot;,
+                            &quot;org.apache.catalina.Service&quot;);
+		// service lifecycle listen
+        digester.addObjectCreate(&quot;Server/Service/Listener&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(&quot;Server/Service/Listener&quot;);
+        digester.addSetNext(&quot;Server/Service/Listener&quot;,
+                            &quot;addLifecycleListener&quot;,
+                            &quot;org.apache.catalina.LifecycleListener&quot;);
+
+        //Executor
+        digester.addObjectCreate(&quot;Server/Service/Executor&quot;,
+                         &quot;org.apache.catalina.core.StandardThreadExecutor&quot;,
+                         &quot;className&quot;);
+        digester.addSetProperties(&quot;Server/Service/Executor&quot;);
+
+        digester.addSetNext(&quot;Server/Service/Executor&quot;,
+                            &quot;addExecutor&quot;,
+                            &quot;org.apache.catalina.Executor&quot;);
+
+        digester.addRule(&quot;Server/Service/Connector&quot;,
+                         new ConnectorCreateRule());
+        digester.addSetProperties(&quot;Server/Service/Connector&quot;,
+                new String[]{&quot;executor&quot;, &quot;sslImplementationName&quot;, &quot;protocol&quot;});
+        digester.addSetNext(&quot;Server/Service/Connector&quot;,
+                            &quot;addConnector&quot;,
+                            &quot;org.apache.catalina.connector.Connector&quot;);
+		// add connector for servie
+        digester.addRule(&quot;Server/Service/Connector&quot;, new AddPortOffsetRule());
+
+        digester.addObjectCreate(&quot;Server/Service/Connector/SSLHostConfig&quot;,
+                                 &quot;org.apache.tomcat.util.net.SSLHostConfig&quot;);
+        digester.addSetProperties(&quot;Server/Service/Connector/SSLHostConfig&quot;);
+        digester.addSetNext(&quot;Server/Service/Connector/SSLHostConfig&quot;,
+                &quot;addSslHostConfig&quot;,
+                &quot;org.apache.tomcat.util.net.SSLHostConfig&quot;);
+
+        digester.addRule(&quot;Server/Service/Connector/SSLHostConfig/Certificate&quot;,
+                         new CertificateCreateRule());
+        digester.addSetProperties(&quot;Server/Service/Connector/SSLHostConfig/Certificate&quot;, new String[]{&quot;type&quot;});
+        digester.addSetNext(&quot;Server/Service/Connector/SSLHostConfig/Certificate&quot;,
+                            &quot;addCertificate&quot;,
+                            &quot;org.apache.tomcat.util.net.SSLHostConfigCertificate&quot;);
+		// add ssl config for connectioner
+        digester.addObjectCreate(&quot;Server/Service/Connector/SSLHostConfig/OpenSSLConf&quot;,
+                                 &quot;org.apache.tomcat.util.net.openssl.OpenSSLConf&quot;);
+        digester.addSetProperties(&quot;Server/Service/Connector/SSLHostConfig/OpenSSLConf&quot;);
+        digester.addSetNext(&quot;Server/Service/Connector/SSLHostConfig/OpenSSLConf&quot;,
+                            &quot;setOpenSslConf&quot;,
+                            &quot;org.apache.tomcat.util.net.openssl.OpenSSLConf&quot;);
+
+        digester.addObjectCreate(&quot;Server/Service/Connector/SSLHostConfig/OpenSSLConf/OpenSSLConfCmd&quot;,
+                                 &quot;org.apache.tomcat.util.net.openssl.OpenSSLConfCmd&quot;);
+        digester.addSetProperties(&quot;Server/Service/Connector/SSLHostConfig/OpenSSLConf/OpenSSLConfCmd&quot;);
+        digester.addSetNext(&quot;Server/Service/Connector/SSLHostConfig/OpenSSLConf/OpenSSLConfCmd&quot;,
+                            &quot;addCmd&quot;,
+                            &quot;org.apache.tomcat.util.net.openssl.OpenSSLConfCmd&quot;);
+		// add lifecycle listen for connector
+        digester.addObjectCreate(&quot;Server/Service/Connector/Listener&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(&quot;Server/Service/Connector/Listener&quot;);
+        digester.addSetNext(&quot;Server/Service/Connector/Listener&quot;,
+                            &quot;addLifecycleListener&quot;,
+                            &quot;org.apache.catalina.LifecycleListener&quot;);
+		// add upgrade protocol
+        digester.addObjectCreate(&quot;Server/Service/Connector/UpgradeProtocol&quot;,
+                                  null, // MUST be specified in the element
+                                  &quot;className&quot;);
+        digester.addSetProperties(&quot;Server/Service/Connector/UpgradeProtocol&quot;);
+        digester.addSetNext(&quot;Server/Service/Connector/UpgradeProtocol&quot;,
+                            &quot;addUpgradeProtocol&quot;,
+                            &quot;org.apache.coyote.UpgradeProtocol&quot;);
+		
+        // Add RuleSets for nested elements
+        digester.addRuleSet(new NamingRuleSet(&quot;Server/GlobalNamingResources/&quot;));
+        digester.addRuleSet(new EngineRuleSet(&quot;Server/Service/&quot;));
+        digester.addRuleSet(new HostRuleSet(&quot;Server/Service/Engine/&quot;));
+        digester.addRuleSet(new ContextRuleSet(&quot;Server/Service/Engine/Host/&quot;));
+        addClusterRuleSet(digester, &quot;Server/Service/Engine/Host/Cluster/&quot;);
+        digester.addRuleSet(new NamingRuleSet(&quot;Server/Service/Engine/Host/Context/&quot;));
+
+        // When the 'engine' is found, set the parentClassLoader.
+        digester.addRule(&quot;Server/Service/Engine&quot;,
+                         new SetParentClassLoaderRule(parentClassLoader));
+        addClusterRuleSet(digester, &quot;Server/Service/Engine/Cluster/&quot;);
+
+        return digester;
+
+    }
+
+</code></pre>
+<h3><a class="header" href="#engine" id="engine">Engine</a></h3>
+<pre><code class="language-java">
+    /**
+     * &lt;p&gt;Add the set of Rule instances defined in this RuleSet to the
+     * specified &lt;code&gt;Digester&lt;/code&gt; instance, associating them with
+     * our namespace URI (if any).  This method should only be called
+     * by a Digester instance.&lt;/p&gt;
+     *
+     * @param digester Digester instance to which the new Rule instances
+     *  should be added.
+     */
+    @Override
+    public void addRuleInstances(Digester digester) {
+
+        // engine instance
+        digester.addObjectCreate(prefix + &quot;Engine&quot;,
+                                 &quot;org.apache.catalina.core.StandardEngine&quot;,
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Engine&quot;);
+        digester.addRule(prefix + &quot;Engine&quot;,
+                         new LifecycleListenerRule
+                         (&quot;org.apache.catalina.startup.EngineConfig&quot;,
+                          &quot;engineConfigClass&quot;));
+        digester.addSetNext(prefix + &quot;Engine&quot;,
+                            &quot;setContainer&quot;,
+                            &quot;org.apache.catalina.Engine&quot;);
+
+        //Cluster configuration start
+        digester.addObjectCreate(prefix + &quot;Engine/Cluster&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Engine/Cluster&quot;);
+        digester.addSetNext(prefix + &quot;Engine/Cluster&quot;,
+                            &quot;setCluster&quot;,
+                            &quot;org.apache.catalina.Cluster&quot;);
+        //Cluster configuration end
+		// lifecycle listen
+        digester.addObjectCreate(prefix + &quot;Engine/Listener&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Engine/Listener&quot;);
+        digester.addSetNext(prefix + &quot;Engine/Listener&quot;,
+                            &quot;addLifecycleListener&quot;,
+                            &quot;org.apache.catalina.LifecycleListener&quot;);
+
+
+        digester.addRuleSet(new RealmRuleSet(prefix + &quot;Engine/&quot;));
+		// 安全配置
+        digester.addObjectCreate(prefix + &quot;Engine/Valve&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Engine/Valve&quot;);
+        digester.addSetNext(prefix + &quot;Engine/Valve&quot;,
+                            &quot;addValve&quot;,
+                            &quot;org.apache.catalina.Valve&quot;);
+    }
+</code></pre>
+<h3><a class="header" href="#host" id="host">host</a></h3>
+<pre><code class="language-java">   /**
+     * &lt;p&gt;Add the set of Rule instances defined in this RuleSet to the
+     * specified &lt;code&gt;Digester&lt;/code&gt; instance, associating them with
+     * our namespace URI (if any).  This method should only be called
+     * by a Digester instance.&lt;/p&gt;
+     *
+     * @param digester Digester instance to which the new Rule instances
+     *  should be added.
+     */
+    @Override
+    public void addRuleInstances(Digester digester) {
+		// create host instance
+        digester.addObjectCreate(prefix + &quot;Host&quot;,
+                                 &quot;org.apache.catalina.core.StandardHost&quot;,
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Host&quot;);
+        digester.addRule(prefix + &quot;Host&quot;,
+                         new CopyParentClassLoaderRule());
+        digester.addRule(prefix + &quot;Host&quot;,
+                         new LifecycleListenerRule
+                         (&quot;org.apache.catalina.startup.HostConfig&quot;,
+                          &quot;hostConfigClass&quot;));
+        // addChild to Engine
+        digester.addSetNext(prefix + &quot;Host&quot;,
+                            &quot;addChild&quot;,
+                            &quot;org.apache.catalina.Container&quot;);
+
+        digester.addCallMethod(prefix + &quot;Host/Alias&quot;,
+                               &quot;addAlias&quot;, 0);
+
+        //Cluster configuration start
+        digester.addObjectCreate(prefix + &quot;Host/Cluster&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Host/Cluster&quot;);
+        digester.addSetNext(prefix + &quot;Host/Cluster&quot;,
+                            &quot;setCluster&quot;,
+                            &quot;org.apache.catalina.Cluster&quot;);
+        //Cluster configuration end
+		//addLifecycleListener
+        digester.addObjectCreate(prefix + &quot;Host/Listener&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Host/Listener&quot;);
+        digester.addSetNext(prefix + &quot;Host/Listener&quot;,
+                            &quot;addLifecycleListener&quot;,
+                            &quot;org.apache.catalina.LifecycleListener&quot;);
+
+        digester.addRuleSet(new RealmRuleSet(prefix + &quot;Host/&quot;));
+		// 安全配置
+        digester.addObjectCreate(prefix + &quot;Host/Valve&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Host/Valve&quot;);
+        digester.addSetNext(prefix + &quot;Host/Valve&quot;,
+                            &quot;addValve&quot;,
+                            &quot;org.apache.catalina.Valve&quot;);
+    }
+</code></pre>
+<h3><a class="header" href="#content" id="content">content</a></h3>
+<pre><code class="language-java">
+    /**
+     * &lt;p&gt;Add the set of Rule instances defined in this RuleSet to the
+     * specified &lt;code&gt;Digester&lt;/code&gt; instance, associating them with
+     * our namespace URI (if any).  This method should only be called
+     * by a Digester instance.&lt;/p&gt;
+     *
+     * @param digester Digester instance to which the new Rule instances
+     *  should be added.
+     */
+    @Override
+    public void addRuleInstances(Digester digester) {
+		// Context instance
+        // if create else use hostconfig auto create
+        if (create) {
+            digester.addObjectCreate(prefix + &quot;Context&quot;,
+                    &quot;org.apache.catalina.core.StandardContext&quot;, &quot;className&quot;);
+            digester.addSetProperties(prefix + &quot;Context&quot;);
+        } else {
+            digester.addSetProperties(prefix + &quot;Context&quot;, new String[]{&quot;path&quot;, &quot;docBase&quot;});
+        }
+
+        if (create) {
+            digester.addRule(prefix + &quot;Context&quot;,
+                             new LifecycleListenerRule
+                                 (&quot;org.apache.catalina.startup.ContextConfig&quot;,
+                                  &quot;configClass&quot;));
+            digester.addSetNext(prefix + &quot;Context&quot;,
+                                &quot;addChild&quot;,
+                                &quot;org.apache.catalina.Container&quot;);
+        }
+		//addLifecycleListener
+        digester.addObjectCreate(prefix + &quot;Context/Listener&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Listener&quot;);
+        digester.addSetNext(prefix + &quot;Context/Listener&quot;,
+                            &quot;addLifecycleListener&quot;,
+                            &quot;org.apache.catalina.LifecycleListener&quot;);
+		// class loader
+        digester.addObjectCreate(prefix + &quot;Context/Loader&quot;,
+                            &quot;org.apache.catalina.loader.WebappLoader&quot;,
+                            &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Loader&quot;);
+        digester.addSetNext(prefix + &quot;Context/Loader&quot;,
+                            &quot;setLoader&quot;,
+                            &quot;org.apache.catalina.Loader&quot;);
+		// session mangger
+        digester.addObjectCreate(prefix + &quot;Context/Manager&quot;,
+                                 &quot;org.apache.catalina.session.StandardManager&quot;,
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Manager&quot;);
+        digester.addSetNext(prefix + &quot;Context/Manager&quot;,
+                            &quot;setManager&quot;,
+                            &quot;org.apache.catalina.Manager&quot;);
+
+        digester.addObjectCreate(prefix + &quot;Context/Manager/Store&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Manager/Store&quot;);
+        digester.addSetNext(prefix + &quot;Context/Manager/Store&quot;,
+                            &quot;setStore&quot;,
+                            &quot;org.apache.catalina.Store&quot;);
+
+        digester.addObjectCreate(prefix + &quot;Context/Manager/SessionIdGenerator&quot;,
+                                 &quot;org.apache.catalina.util.StandardSessionIdGenerator&quot;,
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Manager/SessionIdGenerator&quot;);
+        digester.addSetNext(prefix + &quot;Context/Manager/SessionIdGenerator&quot;,
+                            &quot;setSessionIdGenerator&quot;,
+                            &quot;org.apache.catalina.SessionIdGenerator&quot;);
+		// init pars
+        digester.addObjectCreate(prefix + &quot;Context/Parameter&quot;,
+                                 &quot;org.apache.tomcat.util.descriptor.web.ApplicationParameter&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Parameter&quot;);
+        digester.addSetNext(prefix + &quot;Context/Parameter&quot;,
+                            &quot;addApplicationParameter&quot;,
+                            &quot;org.apache.tomcat.util.descriptor.web.ApplicationParameter&quot;);
+
+        digester.addRuleSet(new RealmRuleSet(prefix + &quot;Context/&quot;));
+		// 安全配置 和 web resource
+        digester.addObjectCreate(prefix + &quot;Context/Resources&quot;,
+                                 &quot;org.apache.catalina.webresources.StandardRoot&quot;,
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Resources&quot;);
+        digester.addSetNext(prefix + &quot;Context/Resources&quot;,
+                            &quot;setResources&quot;,
+                            &quot;org.apache.catalina.WebResourceRoot&quot;);
+
+        digester.addObjectCreate(prefix + &quot;Context/Resources/PreResources&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Resources/PreResources&quot;);
+        digester.addSetNext(prefix + &quot;Context/Resources/PreResources&quot;,
+                            &quot;addPreResources&quot;,
+                            &quot;org.apache.catalina.WebResourceSet&quot;);
+
+        digester.addObjectCreate(prefix + &quot;Context/Resources/JarResources&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Resources/JarResources&quot;);
+        digester.addSetNext(prefix + &quot;Context/Resources/JarResources&quot;,
+                            &quot;addJarResources&quot;,
+                            &quot;org.apache.catalina.WebResourceSet&quot;);
+
+        digester.addObjectCreate(prefix + &quot;Context/Resources/PostResources&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Resources/PostResources&quot;);
+        digester.addSetNext(prefix + &quot;Context/Resources/PostResources&quot;,
+                            &quot;addPostResources&quot;,
+                            &quot;org.apache.catalina.WebResourceSet&quot;);
+
+		// 资源链接
+        digester.addObjectCreate(prefix + &quot;Context/ResourceLink&quot;,
+                &quot;org.apache.tomcat.util.descriptor.web.ContextResourceLink&quot;);
+        digester.addSetProperties(prefix + &quot;Context/ResourceLink&quot;);
+        digester.addRule(prefix + &quot;Context/ResourceLink&quot;,
+                new SetNextNamingRule(&quot;addResourceLink&quot;,
+                        &quot;org.apache.tomcat.util.descriptor.web.ContextResourceLink&quot;));
+		// 添加  valve
+        digester.addObjectCreate(prefix + &quot;Context/Valve&quot;,
+                                 null, // MUST be specified in the element
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/Valve&quot;);
+        digester.addSetNext(prefix + &quot;Context/Valve&quot;,
+                            &quot;addValve&quot;,
+                            &quot;org.apache.catalina.Valve&quot;);
+		// 添加deamon config
+        digester.addCallMethod(prefix + &quot;Context/WatchedResource&quot;,
+                               &quot;addWatchedResource&quot;, 0);
+
+        digester.addCallMethod(prefix + &quot;Context/WrapperLifecycle&quot;,
+                               &quot;addWrapperLifecycle&quot;, 0);
+
+        digester.addCallMethod(prefix + &quot;Context/WrapperListener&quot;,
+                               &quot;addWrapperListener&quot;, 0);
+
+        digester.addObjectCreate(prefix + &quot;Context/JarScanner&quot;,
+                                 &quot;org.apache.tomcat.util.scan.StandardJarScanner&quot;,
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/JarScanner&quot;);
+        digester.addSetNext(prefix + &quot;Context/JarScanner&quot;,
+                            &quot;setJarScanner&quot;,
+                            &quot;org.apache.tomcat.JarScanner&quot;);
+
+        digester.addObjectCreate(prefix + &quot;Context/JarScanner/JarScanFilter&quot;,
+                                 &quot;org.apache.tomcat.util.scan.StandardJarScanFilter&quot;,
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/JarScanner/JarScanFilter&quot;);
+        digester.addSetNext(prefix + &quot;Context/JarScanner/JarScanFilter&quot;,
+                            &quot;setJarScanFilter&quot;,
+                            &quot;org.apache.tomcat.JarScanFilter&quot;);
+		// cookies process
+        digester.addObjectCreate(prefix + &quot;Context/CookieProcessor&quot;,
+                                 &quot;org.apache.tomcat.util.http.Rfc6265CookieProcessor&quot;,
+                                 &quot;className&quot;);
+        digester.addSetProperties(prefix + &quot;Context/CookieProcessor&quot;);
+        digester.addSetNext(prefix + &quot;Context/CookieProcessor&quot;,
+                            &quot;setCookieProcessor&quot;,
+                            &quot;org.apache.tomcat.util.http.CookieProcessor&quot;);
+    }
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../catalina/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../ABOUT.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../catalina/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../ABOUT.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="../../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

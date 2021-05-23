@@ -1,0 +1,1177 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>阅读笔记 with CS</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">前言</a></li><li class="chapter-item expanded "><a href="sqlx/index.html"><strong aria-hidden="true">1.</strong> Sqlx</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="sqlx/sqlx-rs.html"><strong aria-hidden="true">1.1.</strong> sqlx-rs</a></li><li class="chapter-item expanded "><a href="sqlx/sqlx-query-query.html"><strong aria-hidden="true">1.2.</strong> query::Query</a></li><li class="chapter-item expanded "><a href="sqlx/sqlx-ping.html"><strong aria-hidden="true">1.3.</strong> ping</a></li><li class="chapter-item expanded "><a href="sqlx/sqlx-fetch_all.html"><strong aria-hidden="true">1.4.</strong> fetch_all</a></li><li class="chapter-item expanded "><a href="sqlx/sqlx-fromrow.html"><strong aria-hidden="true">1.5.</strong> FromRow</a></li></ol></li><li class="chapter-item expanded "><a href="stream/index.html"><strong aria-hidden="true">2.</strong> Stream</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="stream/page1.html"><strong aria-hidden="true">2.1.</strong> stream-utf-bom</a></li></ol></li><li class="chapter-item expanded "><a href="aop/index.html"><strong aria-hidden="true">3.</strong> AOP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="aop/java-proxy.html"><strong aria-hidden="true">3.1.</strong> java-proxy</a></li></ol></li><li class="chapter-item expanded "><a href="bloomfilter/index.html"><strong aria-hidden="true">4.</strong> bloomfilter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="bloomfilter/java-bloomfilter.html"><strong aria-hidden="true">4.1.</strong> java-bloomfilter</a></li></ol></li><li class="chapter-item expanded "><a href="cache/index.html"><strong aria-hidden="true">5.</strong> cache</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cache/cache-policy.html"><strong aria-hidden="true">5.1.</strong> cache-policy</a></li></ol></li><li class="chapter-item expanded "><a href="verification-random/index.html"><strong aria-hidden="true">6.</strong> verification-random</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="verification-random/ThreadLocalRandom.html"><strong aria-hidden="true">6.1.</strong> ThreadLocalRandom</a></li><li class="chapter-item expanded "><a href="verification-random/Graphics2D.html"><strong aria-hidden="true">6.2.</strong> ThreadLocalRandom</a></li></ol></li><li class="chapter-item expanded "><a href="scheduler/index.html"><strong aria-hidden="true">7.</strong> scheduler</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scheduler/what-does-scheduler-need.html"><strong aria-hidden="true">7.1.</strong> what-does-scheduler-need</a></li></ol></li><li class="chapter-item expanded "><a href="security/index.html"><strong aria-hidden="true">8.</strong> security</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="security/java-security.html"><strong aria-hidden="true">8.1.</strong> java-security</a></li></ol></li><li class="chapter-item expanded "><a href="sqldriver/index.html"><strong aria-hidden="true">9.</strong> sqldriver</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="sqldriver/jdbc1.html"><strong aria-hidden="true">9.1.</strong> db mate info</a></li></ol></li><li class="chapter-item expanded "><a href="datafeature/index.html"><strong aria-hidden="true">10.</strong> datafeature</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="datafeature/deterministic-finite-automaton.html"><strong aria-hidden="true">10.1.</strong> deterministic-finite-automaton</a></li></ol></li><li class="chapter-item expanded "><a href="bit/index.html"><strong aria-hidden="true">11.</strong> bit &amp; ^</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="bit/base.html"><strong aria-hidden="true">11.1.</strong> base</a></li></ol></li><li class="chapter-item expanded "><a href="ABOUT.html">About</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">阅读笔记 with CS</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#readme" id="readme">README</a></h1>
+<h3><a class="header" href="#阅读笔记" id="阅读笔记"><code>阅读笔记</code></a></h3>
+<ul>
+<li><a href="./?search=rust-tag-cnVzdC10YWc=">rust相关</a></li>
+<li><a href="./?search=java-tag-amF2YS10YWc=">java相关</a></li>
+<li><a href="./?search=ds-tag">数据结构技巧</a>)</li>
+</ul>
+<p><a href="https://tools.ietf.org/">IETF</a></p>
+<h1><a class="header" href="#sqlx" id="sqlx">SQLX</a></h1>
+<p><a href="https://github.com/ChenPufeng/sqlx">sqlx-rs</a></p>
+<h1><a class="header" href="#sqlx-rust" id="sqlx-rust">sqlx rust</a></h1>
+<div style="display:none">rust-tag-cnVzdC10YWc=</div>
+<hr />
+<ul>
+<li><a href="sqlx/./sqlx-query-query.html">sqlx::query</a></li>
+</ul>
+<pre><pre class="playground"><code class="language-rust editable">    let mut conn = new::&lt;Any&gt;().await?;
+
+    let value = sqlx::query(&quot;select 1 + 5&quot;)
+        .try_map(|row: AnyRow| row.try_get::&lt;i32, _&gt;(0))
+        .fetch_one(&amp;mut conn)
+        .await?;
+
+    assert_eq!(6i32, value);
+
+    conn.close().await?;
+
+    Ok(())
+</code></pre></pre>
+<ul>
+<li><a href="sqlx/./sqlx-ping.html">ping</a></li>
+</ul>
+<pre><pre class="playground"><code class="language-rust editable">    let mut conn = new::&lt;Any&gt;().await?;
+
+    conn.ping().await?;
+
+    Ok(())
+</code></pre></pre>
+<ul>
+<li>pool  <a href="sqlx/./sqlx-fetch_all.html">fetch_all</a></li>
+</ul>
+<pre><pre class="playground"><code class="language-rust editable">    let pool = sqlx_test::pool::&lt;Any&gt;().await?;
+
+    let rows = pool.fetch_all(&quot;SELECT 1; SElECT 2&quot;).await?;
+
+    assert_eq!(rows.len(), 2);
+
+    Ok(())
+</code></pre></pre>
+<ul>
+<li>fail and recover</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust editable">    let mut conn = new::&lt;Any&gt;().await?;
+
+    for i in 0..10 {
+        // make a query that will fail
+        let res = conn
+            .execute(&quot;INSERT INTO not_found (column) VALUES (10)&quot;)
+            .await;
+
+        assert!(res.is_err());
+
+        // now try and use the connection
+        let val: i32 = conn
+            .fetch_one(&amp;*format!(&quot;SELECT {}&quot;, i))
+            .await?
+            .get_unchecked(0);
+
+        assert_eq!(val, i);
+    }
+
+    Ok(())
+</code></pre></pre>
+<ul>
+<li>Make a SQL query that is mapped to a concrete type  use <a href="sqlx/./sqlx-fromrow.html">FromRow</a></li>
+</ul>
+<blockquote>
+<p><code>in my opinion , rust not usually used reflections but use a lot of macro and trait</code></p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust editable">pub trait FromRow&lt;'r, R: Row&gt;: Sized {
+    fn from_row(row: &amp;'r R) -&gt; Result&lt;Self, Error&gt;;
+}
+</code></pre></pre>
+<blockquote>
+<p>then ,we can use <code>#[derive(sqlx::FromRow)]</code></p>
+</blockquote>
+<h1><a class="header" href="#queryquery" id="queryquery">query::Query</a></h1>
+<div style="display:none">rust-tag-cnVzdC10YWc=</div>
+<p><a href="https://github.com/ChenPufeng/sqlx/blob/77cdafe08a11afee2bf72e85afecd7317f6671df/sqlx-core/src/query.rs#L17">Query</a></p>
+<pre><code class="language-rust no_run noplaypen">/// Raw SQL query with bind parameters. Returned by [`query`][crate::query::query].
+#[must_use = &quot;query must be executed to affect database&quot;]
+pub struct Query&lt;'q, DB: Database, A&gt; {
+    pub(crate) statement: Either&lt;&amp;'q str, &amp;'q &lt;DB as HasStatement&lt;'q&gt;&gt;::Statement&gt;,
+    pub(crate) arguments: Option&lt;A&gt;,
+    pub(crate) database: PhantomData&lt;DB&gt;,
+    pub(crate) persistent: bool,
+}
+
+/// Make a SQL query.
+pub fn query&lt;DB&gt;(sql: &amp;str) -&gt; Query&lt;'_, DB, &lt;DB as HasArguments&lt;'_&gt;&gt;::Arguments&gt;
+where
+    DB: Database,
+{
+    Query {
+        //Zero-sized type used to mark things that &quot;act like&quot; they own a T.
+        //Adding a PhantomData&lt;T&gt; field to your type tells the compiler that 
+        //your type acts as though it stores a value of type T, even though it doesn't really. 
+        //This information is used when computing certain safety properties.
+        database: PhantomData,
+        arguments: Some(Default::default()),
+        //The enum Either with variants Left and Right is a general purpose sum type with two cases.
+        //The Either type is symmetric and treats its variants the same way, without preference.
+        //(For representing success or error, use the regular Result enum instead.)
+        statement: Either::Left(sql),
+        persistent: true,
+    }
+}
+</code></pre>
+<p><a href="https://github.com/ChenPufeng/sqlx/blob/77cdafe08a11afee2bf72e85afecd7317f6671df/sqlx-core/src/query.rs#L102">try_map</a></p>
+<pre><code class="language-rust no_run noplaypen">
+
+<span class="boring">impl&lt;'q, DB, A: Send&gt; Query&lt;'q, DB, A&gt;
+</span><span class="boring">where
+</span><span class="boring">   DB: Database,
+</span><span class="boring">   A: 'q + IntoArguments&lt;'q, DB&gt;,
+</span><span class="boring">{
+</span>
+    /// Map each row in the result to another type.
+    ///
+    /// See [`try_map`](Query::try_map) for a fallible version of this method.
+    ///
+    /// The [`query_as`](super::query_as::query_as) method will construct a mapped query using
+    /// a [`FromRow`](super::from_row::FromRow) implementation.
+    #[inline]
+    pub fn map&lt;F, O&gt;(self, f: F) -&gt; Map&lt;'q, DB, impl TryMapRow&lt;DB, Output = O&gt;, A&gt;
+    where
+        F: MapRow&lt;DB, Output = O&gt;,
+        O: Unpin,
+    {
+        self.try_map(MapRowAdapter(f))
+    }
+<span class="boring">}
+</span></code></pre>
+<p><a href="https://github.com/ChenPufeng/sqlx/blob/77cdafe08a11afee2bf72e85afecd7317f6671df/sqlx-core/src/query.rs#L319">fetch_one</a></p>
+<pre><code class="language-rust no_run noplaypen">
+<span class="boring">impl&lt;'q, DB, A: Send&gt; Query&lt;'q, DB, A&gt;
+</span><span class="boring">where
+</span><span class="boring">    DB: Database,
+</span><span class="boring">    A: 'q + IntoArguments&lt;'q, DB&gt;,
+</span><span class="boring">{
+</span>
+
+   /// Execute the query and returns exactly one row.
+    pub async fn fetch_one&lt;'e, 'c: 'e, E&gt;(self, executor: E) -&gt; Result&lt;O, Error&gt;
+    where
+        'q: 'e,
+        E: 'e + Executor&lt;'c, Database = DB&gt;,
+        DB: 'e,
+        F: 'e,
+        O: 'e,
+    {
+        self.fetch_optional(executor)
+            .and_then(|row| match row {
+                Some(row) =&gt; future::ok(row),
+                None =&gt; future::err(Error::RowNotFound),
+            })
+            .await
+    }
+
+    /// Execute the query and returns at most one row.
+    pub async fn fetch_optional&lt;'e, 'c: 'e, E&gt;(mut self, executor: E) -&gt; Result&lt;Option&lt;O&gt;, Error&gt;
+    where
+        'q: 'e,
+        E: 'e + Executor&lt;'c, Database = DB&gt;,
+        DB: 'e,
+        F: 'e,
+        O: 'e,
+    {
+        //  executor.fetch_optional need impl with target db like
+        let row = executor.fetch_optional(self.inner).await?; pg、mysql、sqlite
+
+        if let Some(row) = row {
+            self.mapper.try_map_row(row).map(Some)
+        } else {
+            Ok(None)
+        }
+    }
+<span class="boring">}
+</span></code></pre>
+<p>fetch_optional</p>
+<pre><code class="language-rust no_run noplaypen">    fn fetch_optional&lt;'e, 'q: 'e, E: 'q&gt;(
+        self,
+        mut query: E,
+    ) -&gt; BoxFuture&lt;'e, Result&lt;Option&lt;AnyRow&gt;, Error&gt;&gt;
+    where
+        'c: 'e,
+        E: Execute&lt;'q, Self::Database&gt;,
+    {
+        let arguments = query.take_arguments();
+        let query = query.sql();
+
+        Box::pin(async move {
+            Ok(match &amp;mut self.0 {
+                #[cfg(feature = &quot;postgres&quot;)]
+                AnyConnectionKind::Postgres(conn) =&gt; conn
+                    .fetch_optional((query, arguments.map(Into::into)))
+                    .await?
+                    .map(Into::into),
+
+                #[cfg(feature = &quot;mysql&quot;)]
+                AnyConnectionKind::MySql(conn) =&gt; conn
+                    .fetch_optional((query, arguments.map(Into::into)))
+                    .await?
+                    .map(Into::into),
+
+                #[cfg(feature = &quot;sqlite&quot;)]
+                AnyConnectionKind::Sqlite(conn) =&gt; conn
+                    .fetch_optional((query, arguments.map(Into::into)))
+                    .await?
+                    .map(Into::into),
+
+                #[cfg(feature = &quot;mssql&quot;)]
+                AnyConnectionKind::Mssql(conn) =&gt; conn
+                    .fetch_optional((query, arguments.map(Into::into)))
+                    .await?
+                    .map(Into::into),
+            })
+        })
+    }
+</code></pre>
+<p><a href="https://github.com/ChenPufeng/sqlx/blob/77cdafe08a11afee2bf72e85afecd7317f6671df/sqlx-core/src/query.rs#L447">map_row</a></p>
+<pre><code class="language-rust no_run noplaypen"><span class="boring">#[allow(unused_macros)]
+</span>macro_rules! impl_map_row {
+    ($DB:ident, $R:ident) =&gt; {
+        impl&lt;O: Unpin, F&gt; crate::query::MapRow&lt;$DB&gt; for F
+        where
+            F: Send + FnMut($R) -&gt; O,
+        {
+            type Output = O;
+
+            fn map_row(&amp;mut self, row: $R) -&gt; O {
+                (self)(row)
+            }
+        }
+
+        impl&lt;O: Unpin, F&gt; crate::query::TryMapRow&lt;$DB&gt; for F
+        where
+            F: Send + FnMut($R) -&gt; Result&lt;O, crate::error::Error&gt;,
+        {
+            type Output = O;
+
+            fn try_map_row(&amp;mut self, row: $R) -&gt; Result&lt;O, crate::error::Error&gt; {
+                (self)(row)
+            }
+        }
+    };
+}
+
+</code></pre>
+<h1><a class="header" href="#ping" id="ping">ping</a></h1>
+<div style="display:none">rust-tag-cnVzdC10YWc=</div>
+with pg
+<pre><code class="language-rust no_run noplaypen">    // this impl under pg
+    fn ping(&amp;mut self) -&gt; BoxFuture&lt;'_, Result&lt;(), Error&gt;&gt; {
+        // By sending a comment we avoid an error if the connection was in the middle of a rowset
+        self.execute(&quot;/* SQLx ping */&quot;).map_ok(|_| ()).boxed()
+    }
+    // under Any db
+    fn ping(&amp;mut self) -&gt; BoxFuture&lt;'_, Result&lt;(), Error&gt;&gt; {
+        delegate_to_mut!(self.ping())
+    }
+</code></pre>
+<p>delegate_to_mut!</p>
+<pre><code class="language-rust no_run noplaypen">
+macro_rules! delegate_to_mut {
+    ($self:ident.$method:ident($($arg:ident),*)) =&gt; {
+        match &amp;mut $self.0 {
+            #[cfg(feature = &quot;postgres&quot;)]
+            AnyConnectionKind::Postgres(conn) =&gt; conn.$method($($arg),*),
+
+            #[cfg(feature = &quot;mysql&quot;)]
+            AnyConnectionKind::MySql(conn) =&gt; conn.$method($($arg),*),
+
+            #[cfg(feature = &quot;sqlite&quot;)]
+            AnyConnectionKind::Sqlite(conn) =&gt; conn.$method($($arg),*),
+
+            #[cfg(feature = &quot;mssql&quot;)]
+            AnyConnectionKind::Mssql(conn) =&gt; conn.$method($($arg),*),
+        }
+    };
+}
+
+
+</code></pre>
+<h1><a class="header" href="#sqlx-fetch_all" id="sqlx-fetch_all">sqlx-fetch_all</a></h1>
+<div style="display:none">rust-tag-cnVzdC10YWc=</div>
+<pre><code class="language-rust no_run noplaypen">
+<span class="boring">pub trait Executor&lt;'c&gt;: Send + Debug + Sized {
+</span><span class="boring">   type Database: Database;
+</span>
+    /// Execute the query and return all the generated results, collected into a [`Vec`].
+    fn fetch_all&lt;'e, 'q: 'e, E: 'q&gt;(
+        self,
+        query: E,
+    ) -&gt; BoxFuture&lt;'e, Result&lt;Vec&lt;&lt;Self::Database as Database&gt;::Row&gt;, Error&gt;&gt;
+    where
+        'c: 'e,
+        E: Execute&lt;'q, Self::Database&gt;,
+    {
+        self.fetch(query).try_collect().boxed()
+    }
+
+    /// Execute the query and return the generated results as a stream.
+    fn fetch&lt;'e, 'q: 'e, E: 'q&gt;(
+        self,
+        query: E,
+    ) -&gt; BoxStream&lt;'e, Result&lt;&lt;Self::Database as Database&gt;::Row, Error&gt;&gt;
+    where
+        'c: 'e,
+        E: Execute&lt;'q, Self::Database&gt;,
+    {
+        self.fetch_many(query)
+            .try_filter_map(|step| async move {
+                Ok(match step {
+                    Either::Left(_) =&gt; None,
+                    Either::Right(row) =&gt; Some(row),
+                })
+            })
+            .boxed()
+    }
+
+
+
+<span class="boring">}
+</span></code></pre>
+<p>fetch_many with AnyConnection</p>
+<pre><code class="language-rust no_run noplaypen"><span class="boring">impl&lt;'c&gt; Executor&lt;'c&gt; for &amp;'c mut AnyConnection {
+</span><span class="boring">   type Database = Any;
+</span>
+    fn fetch_many&lt;'e, 'q: 'e, E: 'q&gt;(
+        self,
+        mut query: E,
+    ) -&gt; BoxStream&lt;'e, Result&lt;Either&lt;AnyDone, AnyRow&gt;, Error&gt;&gt;
+    where
+        'c: 'e,
+        E: Execute&lt;'q, Self::Database&gt;,
+    {
+        let arguments = query.take_arguments();
+        let query = query.sql();
+
+        match &amp;mut self.0 {
+            #[cfg(feature = &quot;postgres&quot;)]
+            AnyConnectionKind::Postgres(conn) =&gt; conn
+                .fetch_many((query, arguments.map(Into::into)))
+                .map_ok(|v| v.map_right(Into::into).map_left(Into::into))
+                .boxed(),
+
+            #[cfg(feature = &quot;mysql&quot;)]
+            AnyConnectionKind::MySql(conn) =&gt; conn
+                .fetch_many((query, arguments.map(Into::into)))
+                .map_ok(|v| v.map_right(Into::into).map_left(Into::into))
+                .boxed(),
+
+            #[cfg(feature = &quot;sqlite&quot;)]
+            AnyConnectionKind::Sqlite(conn) =&gt; conn
+                .fetch_many((query, arguments.map(Into::into)))
+                .map_ok(|v| v.map_right(Into::into).map_left(Into::into))
+                .boxed(),
+
+            #[cfg(feature = &quot;mssql&quot;)]
+            AnyConnectionKind::Mssql(conn) =&gt; conn
+                .fetch_many((query, arguments.map(Into::into)))
+                .map_ok(|v| v.map_right(Into::into).map_left(Into::into))
+                .boxed(),
+        }
+    }
+<span class="boring">}
+</span>
+</code></pre>
+<p>fetch_many with PgConnection</p>
+<pre><code class="language-rust no_run noplaypen">
+
+<span class="boring">impl&lt;'c&gt; Executor&lt;'c&gt; for &amp;'c mut PgConnection {
+</span><span class="boring">   type Database = Postgres;
+</span>
+    fn fetch_many&lt;'e, 'q: 'e, E: 'q&gt;(
+        self,
+        mut query: E,
+    ) -&gt; BoxStream&lt;'e, Result&lt;Either&lt;PgDone, PgRow&gt;, Error&gt;&gt;
+    where
+        'c: 'e,
+        E: Execute&lt;'q, Self::Database&gt;,
+    {
+        let sql = query.sql();
+        let metadata = query.statement().map(|s| Arc::clone(&amp;s.metadata));
+        let arguments = query.take_arguments();
+        let persistent = query.persistent();
+
+        Box::pin(try_stream! {
+            let s = self.run(sql, arguments, 0, persistent, metadata).await?;
+            pin_mut!(s);
+
+            while let Some(v) = s.try_next().await? {
+                r#yield!(v);
+            }
+
+            Ok(())
+        })
+    }
+<span class="boring">}
+</span>
+</code></pre>
+<p>try_stream!</p>
+<pre><code class="language-rust no_run noplaypen">
+
+macro_rules! try_stream {
+    ($($block:tt)*) =&gt; {
+        crate::ext::async_stream::TryAsyncStream::new(move |mut sender| async move {
+            macro_rules! r#yield {
+                ($v:expr) =&gt; {
+                    let _ = futures_util::sink::SinkExt::send(&amp;mut sender, Ok($v)).await;
+                }
+            }
+
+            $($block)*
+        })
+    }
+}
+
+</code></pre>
+<h1><a class="header" href="#sqlx-fromrow" id="sqlx-fromrow">sqlx-fromrow</a></h1>
+<div style="display:none">rust-tag-cnVzdC10YWc=</div>
+[FromRow](https://github.com/launchbadge/sqlx/blob/c7cf104a8f6c0e61c2a72bf9631a0f079e0e94f4/sqlx-core/src/from_row.rs#L4)
+---
+<p>A record that can be built from a row returned by the database.</p>
+<p>In order to use <a href="sqlx/fn.query_as.html"><code>query_as</code></a> the output type must implement <code>FromRow</code>.</p>
+<h2><a class="header" href="#derivable" id="derivable">Derivable</a></h2>
+<p>This trait can be derived by SQLx for any struct. The generated implementation
+will consist of a sequence of calls to <a href="sqlx/trait.Row.html#method.try_get"><code>Row::try_get</code></a> using the name from each
+struct field.</p>
+<pre><code class="language-rust ignore">#[derive(sqlx::FromRow)]
+struct User {
+    id: i32,
+    name: String,
+}
+</code></pre>
+<h3><a class="header" href="#field-attributes" id="field-attributes">Field attributes</a></h3>
+<p>Several attributes can be specified to customize how each column in a row is read:</p>
+<h4><a class="header" href="#rename" id="rename"><code>rename</code></a></h4>
+<p>When the name of a field in Rust does not match the name of its corresponding column,
+you can use the <code>rename</code> attribute to specify the name that the field has in the row.
+For example:</p>
+<pre><code class="language-rust ignore">#[derive(sqlx::FromRow)]
+struct User {
+    id: i32,
+    name: String,
+    #[sqlx(rename = &quot;description&quot;)]
+    about_me: String
+}
+</code></pre>
+<p>Given a query such as:</p>
+<pre><code class="language-sql">SELECT id, name, description FROM users;
+</code></pre>
+<p>will read the content of the column <code>description</code> into the field <code>about_me</code>.</p>
+<h4><a class="header" href="#rename_all" id="rename_all"><code>rename_all</code></a></h4>
+<p>By default, field names are expected verbatim (with the exception of the raw identifier prefix <code>r#</code>, if present).
+Placed at the struct level, this attribute changes how the field name is mapped to its SQL column name:</p>
+<pre><code class="language-rust ignore">#[derive(sqlx::FromRow)]
+#[sqlx(rename_all = &quot;camelCase&quot;)]
+struct UserPost {
+    id: i32,
+    // remapped to &quot;userId&quot;
+    user_id: i32,
+    contents: String
+}
+</code></pre>
+<p>The supported values are <code>snake_case</code> (available if you have non-snake-case field names for some
+reason), <code>lowercase</code>, <code>UPPERCASE</code>, <code>camelCase</code>, <code>PascalCase</code>, <code>SCREAMING_SNAKE_CASE</code> and <code>kebab-case</code>.
+The styling of each option is intended to be an example of its behavior.</p>
+<h4><a class="header" href="#default" id="default"><code>default</code></a></h4>
+<p>When your struct contains a field that is not present in your query,
+if the field type has an implementation for [<code>Default</code>],
+you can use the <code>default</code> attribute to assign the default value to said field.
+For example:</p>
+<pre><code class="language-rust ignore">#[derive(sqlx::FromRow)]
+struct User {
+    id: i32,
+    name: String,
+    #[sqlx(default)]
+    location: Option&lt;String&gt;
+}
+</code></pre>
+<p>Given a query such as:</p>
+<pre><code class="language-sql">SELECT id, name FROM users;
+</code></pre>
+<p>will set the value of the field <code>location</code> to the default value of <code>Option&lt;String&gt;</code>,
+which is <code>None</code>.</p>
+<h1><a class="header" href="#index" id="index">index</a></h1>
+<h1><a class="header" href="#stream" id="stream">Stream</a></h1>
+<ul>
+<li>
+<h2><a class="header" href="#bominputstream" id="bominputstream">BOMInputStream</a></h2>
+<blockquote>
+<p>http://akini.mbnet.fi/java/unicodereader/UnicodeInputStream.java.txt
+http://www.unicode.org/unicode/faq/utf_bom.html</p>
+</blockquote>
+<pre><code>BOMs in byte length ordering:
+00 00 FE FF    = UTF-32, big-endian
+FF FE 00 00    = UTF-32, little-endian
+EF BB BF       = UTF-8,
+FE FF          = UTF-16, big-endian
+FF FE          = UTF-16, little-endian
+</code></pre>
+<pre><code class="language-java editable"> /**
+* Read-ahead four bytes and check for BOM marks. Extra bytes are
+* unread back to the stream, only BOM bytes are skipped.
+*/
+protected void init() throws IOException {
+  if (isInited) return;
+
+  byte bom[] = new byte[BOM_SIZE];
+  int n, unread;
+  n = internalIn.read(bom, 0, bom.length);    //读掉头部字节 
+
+ //下面进行匹配
+  if ( (bom[0] == (byte)0x00) &amp;&amp; (bom[1] == (byte)0x00) &amp;&amp;
+              (bom[2] == (byte)0xFE) &amp;&amp; (bom[3] == (byte)0xFF) ) {
+     encoding = &quot;UTF-32BE&quot;;
+     unread = n - 4;
+  } else if ( (bom[0] == (byte)0xFF) &amp;&amp; (bom[1] == (byte)0xFE) &amp;&amp;
+              (bom[2] == (byte)0x00) &amp;&amp; (bom[3] == (byte)0x00) ) {
+     encoding = &quot;UTF-32LE&quot;;
+     unread = n - 4;
+  } else if (  (bom[0] == (byte)0xEF) &amp;&amp; (bom[1] == (byte)0xBB) &amp;&amp;
+        (bom[2] == (byte)0xBF) ) {
+     encoding = &quot;UTF-8&quot;;
+     unread = n - 3;
+  } else if ( (bom[0] == (byte)0xFE) &amp;&amp; (bom[1] == (byte)0xFF) ) {
+     encoding = &quot;UTF-16BE&quot;;
+     unread = n - 2;
+  } else if ( (bom[0] == (byte)0xFF) &amp;&amp; (bom[1] == (byte)0xFE) ) {
+     encoding = &quot;UTF-16LE&quot;;
+     unread = n - 2;
+  } else {
+     // Unicode BOM mark not found, unread all bytes
+     encoding = defaultEnc;
+     unread = n;
+  }      
+  //System.out.println(&quot;read=&quot; + n + &quot;, unread=&quot; + unread);
+   // 回退
+  if (unread &gt; 0) internalIn.unread(bom, (n - unread), unread);
+
+  isInited = true;
+}
+</code></pre>
+</li>
+<li>
+<h2><a class="header" href="#bominputstream-1" id="bominputstream-1">BOMInputStream</a></h2>
+</li>
+<li>
+<h2><a class="header" href="#bominputstream-2" id="bominputstream-2">BOMInputStream</a></h2>
+</li>
+</ul>
+<h1><a class="header" href="#aspect-oriented-programming" id="aspect-oriented-programming">Aspect Oriented Programming</a></h1>
+<blockquote>
+<p>面向切面编程</p>
+</blockquote>
+<h1><a class="header" href="#java-proxy" id="java-proxy">java-proxy</a></h1>
+<div style="display:none">java-tag-amF2YS10YWc=</div>
+<ul>
+<li>JDK-Proxy</li>
+</ul>
+<blockquote>
+<p>必须先定义接口</p>
+</blockquote>
+<pre><code class="language-java"> @CallerSensitive
+    public static Object newProxyInstance(ClassLoader loader, //目标类的loader
+                                          Class&lt;?&gt;[] interfaces,                      //接口类数组
+                                          InvocationHandler h){                       //执行代理方法
+                                          //more
+                                          }
+    //在 InvocationHandler 里 可以在自定义切面方法
+    // like  :before  after 
+
+</code></pre>
+<ul>
+<li>Cglib-Proxy</li>
+</ul>
+<blockquote>
+<p>无需接口，通过asm直接加载字节码生成子类</p>
+</blockquote>
+<pre><code class="language-java">	    Enhancer enhancer = new Enhancer();
+		enhancer.setSuperclass(target.getClass());
+		enhancer.setCallback(
+		                //  impl MethodInterceptor
+		                        );
+	    enhancer.create();
+</code></pre>
+<blockquote>
+<p>上面的cglib实现用到了<code>import net.sf.cglib.proxy.MethodInterceptor;import net.sf.cglib.proxy.MethodProxy;</code>
+如果在spring环境下也可以 用 <code>import org.springframework.cglib.proxy.MethodInterceptor;import org.springframework.cglib.proxy.MethodProxy;</code></p>
+</blockquote>
+<h1><a class="header" href="#bloom-filter" id="bloom-filter">Bloom Filter</a></h1>
+<blockquote>
+<p>Bloom Filter
+<a href="https://blog.csdn.net/zhaoyunxiang721/article/details/41123007">Counting Bloom Filter</a></p>
+</blockquote>
+<p><a href="http://pages.cs.wisc.edu/%7Ecao/papers/summary-cache/node8.html">Bloom Filters - the math</a>
+<a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom_filter-wikipedia</a></p>
+<h1><a class="header" href="#java-bloomfilter" id="java-bloomfilter">java-bloomfilter</a></h1>
+<ul>
+<li>hash算法的选择</li>
+<li>bit数组的实现</li>
+</ul>
+<h1><a class="header" href="#cache" id="cache">cache</a></h1>
+<blockquote>
+<p>cache</p>
+</blockquote>
+<h1><a class="header" href="#cache-policy" id="cache-policy">cache-policy</a></h1>
+<ul>
+<li>先进先出策略</li>
+</ul>
+<blockquote>
+<p>容量固定
+没有过期项目时，先remove先存入的缓存。
+使用链表实现时存入与清除速度快
+缓存丢弃优先级 <code>时间&gt;位置（存入顺序）</code></p>
+</blockquote>
+<ul>
+<li>LRU（LeastRecentlyUsed）</li>
+</ul>
+<blockquote>
+<p>容量固定
+没有过期项目时优先remove最早访问的项
+每次访问都把最新访问的项移动到头部
+缓存丢弃优先级 <code>时间&gt;最后访问时间</code></p>
+</blockquote>
+<ul>
+<li>最小访问频率LFU(least frequently used)</li>
+</ul>
+<blockquote>
+<p>容量固定
+每次访问时根据访问频率排序
+缓存丢弃优先级 <code>时间&gt;访问频率</code></p>
+</blockquote>
+<ul>
+<li>LRU-2[2, 3]</li>
+</ul>
+<blockquote>
+<p>根据倒数最后2次的时间进行比较排序
+记录缓存项目最后2次的时间
+丢弃缓存时优先丢弃倒数最后第二次访问时间距今最长的项</p>
+</blockquote>
+<h1><a class="header" href="#verification-random" id="verification-random">verification-random</a></h1>
+<p>verification-random</p>
+<h1><a class="header" href="#threadlocalrandom" id="threadlocalrandom">ThreadLocalRandom</a></h1>
+<blockquote>
+<p>所以，current根据当前线程获得random实例</p>
+</blockquote>
+<pre><code class="language-java">     /**
+    * Returns the current thread's {@code ThreadLocalRandom}.
+    *
+    * @return the current thread's {@code ThreadLocalRandom}
+    */
+   public static ThreadLocalRandom current() {        
+       if (U.getInt(Thread.currentThread(), PROBE) == 0)
+           localInit();
+       return instance;
+   }
+</code></pre>
+<blockquote>
+<p>在初始化时 ，seed与唯一线程一一对应
+即每一线程有自己的seed
+如果取不到自己的seed，就会造成不同线程使用同一seed</p>
+</blockquote>
+<pre><code class="language-java">    /**
+     * Initialize Thread fields for the current thread.  Called only
+     * when Thread.threadLocalRandomProbe is zero, indicating that a
+     * thread local seed value needs to be generated. Note that even
+     * though the initialization is purely thread-local, we need to
+     * rely on (static) atomic generators to initialize the values.
+     */
+    static final void localInit() {            
+        int p = probeGenerator.addAndGet(PROBE_INCREMENT);
+        int probe = (p == 0) ? 1 : p; // skip 0
+        long seed = mix64(seeder.getAndAdd(SEEDER_INCREMENT));
+        Thread t = Thread.currentThread();
+        U.putLong(t, SEED, seed);
+        U.putInt(t, PROBE, probe);
+    }
+</code></pre>
+<p><code>最后 ，不同线程使用统同一算法、同一seed便会出现相同的随机数 </code></p>
+<h1><a class="header" href="#graphics2d" id="graphics2d">Graphics2D</a></h1>
+<h3><a class="header" href="#java-graphic" id="java-graphic">java-graphic</a></h3>
+<blockquote>
+<p>用于实现验证码</p>
+</blockquote>
+<pre><code class="language-java">		BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D graphics2d = image.createGraphics();
+</code></pre>
+<h1><a class="header" href="#scheduler" id="scheduler">Scheduler</a></h1>
+<p>Scheduler</p>
+<h1><a class="header" href="#一个任务调度器需要什么" id="一个任务调度器需要什么">一个任务调度器需要什么？</a></h1>
+<ul>
+<li>定时器</li>
+<li>执行器</li>
+<li>监听进程</li>
+<li>任务集合</li>
+<li>执行线程池</li>
+</ul>
+<h3><a class="header" href="#crontab" id="crontab">crontab</a></h3>
+<p>crontab: usage error: unrecognized option
+usage:	crontab [-u user] file
+crontab [ -u user ] [ -i ] { -e | -l | -r }
+(default operation is replace, per 1003.2)
+-e	(edit user's crontab)
+-l	(list user's crontab)
+-r	(delete user's crontab)
+-i	(prompt before deleting user's crontab)</p>
+<blockquote>
+<p>f1 f2 f3 f4 f5 program</p>
+</blockquote>
+<pre><code>*    *    *    *    *
+-    -    -    -    -
+|    |    |    |    |
+|    |    |    |    +----- 星期中星期几 (0 - 7) (星期天 为0)
+|    |    |    +---------- 月份 (1 - 12) 
+|    |    +--------------- 一个月中的第几天 (1 - 31)
+|    +-------------------- 小时 (0 - 23)
++------------------------- 分钟 (0 - 59)
+</code></pre>
+<h1><a class="header" href="#security" id="security">security</a></h1>
+<blockquote>
+<p>加密、解密</p>
+</blockquote>
+<ul>
+<li>symmetric</li>
+<li>asymmetric</li>
+<li>digest</li>
+</ul>
+<h1><a class="header" href="#java-security" id="java-security">java-security</a></h1>
+<p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html">java-standard-加密算法</a></p>
+<pre><code class="language-java">     Cipher c = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;);
+	 cipher.init(Cipher.ENCRYPT_MODE, secretKey, params);
+	 cipher.doFinal(base64content)
+</code></pre>
+<h3><a class="header" href="#sm2" id="sm2">SM2</a></h3>
+<pre><code class="language-java">SM2Engine engine = new SM2Engine(digest, mode);
+                    engine.processBlock(data, 0, length); 
+
+</code></pre>
+<h1><a class="header" href="#sqldriver" id="sqldriver">sqldriver</a></h1>
+<p>sqldriver</p>
+<h1><a class="header" href="#db-mate-info" id="db-mate-info">db mate info</a></h1>
+<hr />
+<h4><a class="header" href="#table-info" id="table-info">table info</a></h4>
+<blockquote>
+<p>TABLE_CAT String =&gt; table catalog (may be null)
+TABLE_SCHEM String =&gt; table schema (may be null)
+TABLE_NAME String =&gt; table name
+TABLE_TYPE String =&gt; table type. Typical types are &quot;TABLE&quot;, &quot;VIEW&quot;, &quot;SYSTEM TABLE&quot;, &quot;GLOBAL TEMPORARY&quot;, &quot;LOCAL TEMPORARY&quot;, &quot;ALIAS&quot;,  &quot;SYNONYM&quot;.
+REMARKS String =&gt; explanatory comment on the table
+TYPE_CAT String =&gt; the types catalog (may be null)
+TYPE_SCHEM String =&gt; the types schema (may be null)
+TYPE_NAME String =&gt; type name (may be null)
+SELF_REFERENCING_COL_NAME String =&gt; name of the designated &quot;identifier&quot; column of a typed table (may be null)
+REF_GENERATION String =&gt; specifies how values in SELF_REFERENCING_COL_NAME are created. Values are &quot;SYSTEM&quot;, &quot;USER&quot;, &quot;DERIVED&quot;. (may be null)</p>
+</blockquote>
+<pre><code class="language-java">Connection connection=dataSource.getConnection();
+DatabaseMetaData metadata= connection.getMetaData();
+metadata.getTables(String catalog, String schemaPattern, String tableNamePattern, String[] types);
+</code></pre>
+<h4><a class="header" href="#columns-info" id="columns-info">Columns info</a></h4>
+<blockquote>
+<p>TABLE_CAT String =&gt; table catalog (may be null)
+TABLE_SCHEM String =&gt; table schema (may be null)
+TABLE_NAME String =&gt; table name
+COLUMN_NAME String =&gt; column name
+DATA_TYPE int =&gt; SQL type from java.sql.Types
+TYPE_NAME String =&gt; Data source dependent type name, for a UDT the type name is fully qualified
+COLUMN_SIZE int =&gt; column size.
+BUFFER_LENGTH is not used.
+DECIMAL_DIGITS int =&gt; the number of fractional digits. Null is returned for data types where DECIMAL_DIGITS is not applicable.
+NUM_PREC_RADIX int =&gt; Radix (typically either 10 or 2)
+NULLABLE int =&gt; is NULL allowed.
+columnNoNulls - might not allow NULL values
+columnNullable - definitely allows NULL values
+columnNullableUnknown - nullability unknown
+REMARKS String =&gt; comment describing column (may be null)
+COLUMN_DEF String =&gt; default value for the column, which should be interpreted as a string when the value is enclosed in single quotes (may be null)
+SQL_DATA_TYPE int =&gt; unused
+SQL_DATETIME_SUB int =&gt; unused
+CHAR_OCTET_LENGTH int =&gt; for char types the maximum number of bytes in the column
+ORDINAL_POSITION int =&gt; index of column in table (starting at 1)
+IS_NULLABLE String =&gt; ISO rules are used to determine the nullability for a column.
+YES --- if the column can include NULLs
+NO --- if the column cannot include NULLs
+empty string --- if the nullability for the column is unknown
+SCOPE_CATALOG String =&gt; catalog of table that is the scope of a reference attribute (null if DATA_TYPE isn't REF)
+SCOPE_SCHEMA String =&gt; schema of table that is the scope of a reference attribute (null if the DATA_TYPE isn't REF)
+SCOPE_TABLE String =&gt; table name that this the scope of a reference attribute (null if the DATA_TYPE isn't REF)
+SOURCE_DATA_TYPE short =&gt; source type of a distinct type or user-generated Ref type, SQL type from java.sql.Types (null if DATA_TYPE isn't DISTINCT or user-generated REF)
+IS_AUTOINCREMENT String =&gt; Indicates whether this column is auto incremented
+YES --- if the column is auto incremented
+NO --- if the column is not auto incremented
+empty string --- if it cannot be determined whether the column is auto incremented
+IS_GENERATEDCOLUMN String =&gt; Indicates whether this is a generated column
+YES --- if this a generated column
+NO --- if this not a generated column
+empty string --- if it cannot be determined whether this is a generated column</p>
+</blockquote>
+<pre><code class="language-java">ResultSet rs = metaData.getColumns(catalog, schema, tableNamePattern, String columnNamePattern)
+</code></pre>
+<h4><a class="header" href="#" id=""></a></h4>
+<blockquote>
+<p>TABLE_CAT String =&gt; table catalog (may be null)
+TABLE_SCHEM String =&gt; table schema (may be null)
+TABLE_NAME String =&gt; table name
+COLUMN_NAME String =&gt; column name
+KEY_SEQ short =&gt; sequence number within primary key( a value of 1 represents the first column of the primary key, a value of 2 would represent the second column within the primary key).
+PK_NAME String =&gt; primary key name (may be null)</p>
+</blockquote>
+<pre><code class="language-java">
+ResultSet rs = metaData.getPrimaryKeys(catalog, schema, tableName)
+
+</code></pre>
+<h1><a class="header" href="#datafeature" id="datafeature">datafeature</a></h1>
+<p>datafeature</p>
+<h1><a class="header" href="#deterministic-finite-automaton" id="deterministic-finite-automaton">deterministic-finite-automaton</a></h1>
+<p><a href="https://www.cnblogs.com/naaoveGIS/archive/2016/10/14/5960352.html">DFA参考</a></p>
+<hr />
+<blockquote>
+<p>DFA是一个含5个元素的元祖(S, q0, T, F, Σ)
+S：状态的集合
+q0：初始化状态
+T：状态的转化路径
+F：结束状态的集合
+Σ：全部的字母表</p>
+</blockquote>
+<p><code>基于DFA的特性，可以构建词法树。</code></p>
+<h2><a class="header" href="#bit运算" id="bit运算">bit运算</a></h2>
+<p>位运算</p>
+<p>参考</p>
+<p>http://graphics.stanford.edu/~seander/bithacks.html</p>
+<h2><a class="header" href="#基本运算" id="基本运算">基本运算</a></h2>
+<blockquote>
+<p>https://labuladong.gitee.io/algo/%E7%AE%97%E6%B3%95%E6%80%9D%E7%BB%B4%E7%B3%BB%E5%88%97/%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BD%8D%E6%93%8D%E4%BD%9C.html</p>
+</blockquote>
+<ol>
+<li><strong>利用或操作 <code>|</code> 和空格将英文字符转换为小写</strong></li>
+</ol>
+<pre><code class="language-c">('a' | ' ') = 'a'
+('A' | ' ') = 'a'
+</code></pre>
+<ol start="2">
+<li><strong>利用与操作 <code>&amp;</code> 和下划线将英文字符转换为大写</strong></li>
+</ol>
+<pre><code class="language-c">('b' &amp; '_') = 'B'
+('B' &amp; '_') = 'B'
+</code></pre>
+<ol start="3">
+<li><strong>利用异或操作 <code>^</code> 和空格进行英文字符大小写互换</strong></li>
+</ol>
+<pre><code class="language-c">('d' ^ ' ') = 'D'
+('D' ^ ' ') = 'd'
+</code></pre>
+<ol start="4">
+<li><strong>判断两个数是否异号</strong></li>
+</ol>
+<pre><code class="language-cpp">int x = -1, y = 2;
+bool f = ((x ^ y) &lt; 0); // true
+
+int x = 3, y = 2;
+bool f = ((x ^ y) &lt; 0); // false
+</code></pre>
+<ol start="5">
+<li><strong>不用临时变量交换两个数</strong></li>
+</ol>
+<pre><code class="language-c">int a = 1, b = 2;
+a ^= b;
+b ^= a;
+a ^= b;
+// 现在 a = 2, b = 1
+</code></pre>
+<ol start="6">
+<li><strong>加一</strong></li>
+</ol>
+<pre><code class="language-c">int n = 1;
+n = -~n;
+// 现在 n = 2
+</code></pre>
+<ol start="7">
+<li><strong>减一</strong></li>
+</ol>
+<pre><code class="language-c">int n = 2;
+n = ~-n;
+// 现在 n = 1
+</code></pre>
+<p>8 .  <strong>就是让你返回 n 的二进制表示中有几个 1。因为 n &amp; (n - 1) 可以消除最后一个 1，所以可以用一个循环不停地消除 1 同时计数，直到 n 变成 0 为止。</strong></p>
+<pre><code class="language-cpp">int hammingWeight(uint32_t n) {
+    int res = 0;
+    while (n != 0) {
+        n = n &amp; (n - 1);
+        res++;
+    }
+    return res;
+}
+</code></pre>
+<ol start="9">
+<li><strong>判断一个数是不是 2 的指数</strong></li>
+</ol>
+<p>一个数如果是 2 的指数，那么它的二进制表示一定只含有一个 1：</p>
+<pre><code class="language-cpp">2^0 = 1 = 0b0001
+2^1 = 2 = 0b0010
+2^2 = 4 = 0b0100
+</code></pre>
+<ol start="10">
+<li>** 如果使用  <code>n&amp;(n-1)</code> 的技巧就很简单了（注意运算符优先级，括号不可以省略）：**</li>
+</ol>
+<pre><code class="language-cpp">bool isPowerOfTwo(int n) {
+    if (n &lt;= 0) return false;
+    return (n &amp; (n - 1)) == 0;
+}
+</code></pre>
+<blockquote>
+<p>一个数和它本身做异或运算结果为 0，即 <code>a ^ a = 0</code>；一个数和 0 做异或运算的结果为它本身，即 <code>a ^ 0 = a</code>。</p>
+</blockquote>
+<ol start="11">
+<li><strong>对于这道题目，我们只要把所有数字进行异或，成对儿的数字就会变成 0，落单的数字和 0 做异或还是它本身，所以最后异或的结果就是只出现一次的元素：</strong></li>
+</ol>
+<pre><code class="language-cpp">int singleNumber(vector&lt;int&gt;&amp; nums) {
+    int res = 0;
+    for (int n : nums) {
+        res ^= n;
+    }
+    return res;
+}
+</code></pre>
+<h1><a class="header" href="#readme-1" id="readme-1">README</a></h1>
+<blockquote>
+<p><code>待业中  </code>
+邮箱：realcpf@163.com</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

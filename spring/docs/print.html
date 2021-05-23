@@ -1,0 +1,854 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Spring more</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">前言</a></li><li class="chapter-item expanded "><a href="boot/index.html"><strong aria-hidden="true">1.</strong> boot</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="boot/config.html"><strong aria-hidden="true">1.1.</strong> config</a></li></ol></li><li class="chapter-item expanded "><a href="orm/index.html"><strong aria-hidden="true">2.</strong> orm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="orm/mybatis.html"><strong aria-hidden="true">2.1.</strong> mybatis</a></li><li class="chapter-item expanded "><a href="orm/jdbctemplete.html"><strong aria-hidden="true">2.2.</strong> jdbctemplete</a></li><li class="chapter-item expanded "><a href="orm/mybatisplus.html"><strong aria-hidden="true">2.3.</strong> mybatisplus</a></li><li class="chapter-item expanded "><a href="orm/jpa.html"><strong aria-hidden="true">2.4.</strong> jpa</a></li></ol></li><li class="chapter-item expanded "><a href="base/index.html"><strong aria-hidden="true">3.</strong> java base</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="base/annotation.html"><strong aria-hidden="true">3.1.</strong> annotation</a></li></ol></li><li class="chapter-item expanded "><a href="thread/index.html"><strong aria-hidden="true">4.</strong> thread</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="thread/runandstart.html"><strong aria-hidden="true">4.1.</strong> run and start</a></li><li class="chapter-item expanded "><a href="thread/group.html"><strong aria-hidden="true">4.2.</strong> group</a></li><li class="chapter-item expanded "><a href="thread/state.html"><strong aria-hidden="true">4.3.</strong> state</a></li><li class="chapter-item expanded "><a href="thread/lockandsync.html"><strong aria-hidden="true">4.4.</strong> lock and sync</a></li></ol></li><li class="chapter-item expanded "><a href="ABOUT.html">关于</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Spring more</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#readme" id="readme">README</a></h1>
+<blockquote>
+<p>Spring more</p>
+</blockquote>
+<hr />
+<p><a href="./ABOUT.html">关于</a></p>
+<h1><a class="header" href="#index" id="index">index</a></h1>
+<p><a href="https://spring.io/projects/spring-boot">spring-boot</a></p>
+<blockquote>
+<p>Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can &quot;just run&quot;.</p>
+</blockquote>
+<blockquote>
+<p>We take an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss. Most Spring Boot applications need &gt; &gt; minimal Spring configuration.</p>
+</blockquote>
+<pre><code class="language-java">package com.springboot.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@SpringBootApplication
+public class DemoApplication {
+
+	@RequestMapping(&quot;/&quot;)
+	String index() {
+		return &quot;hello spring boot&quot;;
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+}
+
+</code></pre>
+<p>maven</p>
+<pre><code class="language-xml">	&lt;dependencies&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+	&lt;/dependencies&gt;
+</code></pre>
+<h1><a class="header" href="#config" id="config">config</a></h1>
+<pre><code class="language-java">
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+
+/*
+src/main/resources/test.properties 
+
+
+test.name=KangKang
+test.age=25
+test.vvv=vvv
+
+then 
+@EnableConfigurationProperties(TestConfigBean.class)
+with start Application
+@Autowired
+with the config bean like  `TestConfigBean`
+
+*/
+
+
+@Configuration
+@ConfigurationProperties(prefix=&quot;test&quot;)
+@PropertySource(&quot;classpath:test.properties&quot;) // -&gt;  src/main/resources/test.properties 
+@Component
+public class TestConfigBean {
+	@Value(&quot;${test.vvv}&quot;)
+   private String vvv;
+
+
+	private String name;
+
+	private String name;
+	private int age;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+}
+
+</code></pre>
+<h1><a class="header" href="#index-1" id="index-1">index</a></h1>
+<blockquote>
+<p>orm</p>
+</blockquote>
+<h1><a class="header" href="#mybatis" id="mybatis">mybatis</a></h1>
+<pre><code class="language-java">
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.springframework.stereotype.Component;
+
+
+@Component
+@Mapper
+public interface DemoTableMapper {
+	@Insert(&quot;insert into demotable(col1,col2,col3) values(#{col1},#{col2},#{col3})&quot;)
+	int add(DemoTable student);
+	
+	@Update(&quot;update demotable set col1=#{col1},col2=#{col2} where col3=#{col3}&quot;)
+    int update(DemoTable student);
+	
+	@Delete(&quot;delete from demotable where col3=#{col3}&quot;)
+    int deleteBycol3(String sno);
+	
+	@Select(&quot;select * from demotable where col3=#{col3}&quot;)   // #{col3} means  select * from demotable where col3=?;
+	@Results(id = &quot;demotable&quot;,value= {                          // if use '${name}' means select * from demotable where col3 = 'name'
+		 @Result(property = &quot;col3&quot;, column = &quot;col3&quot;, javaType = String.class),
+         @Result(property = &quot;col2&quot;, column = &quot;col2&quot;, javaType = String.class),
+         @Result(property = &quot;col1&quot;, column = &quot;col1&quot;, javaType = String.class)
+	})
+    Student queryDemoTableBycol3(String col3); // @Param(&quot;col3&quot;) String col3
+
+	@Select(&quot;select * from demotable &quot;)                          //  &lt;resultMap id=&quot;allDemoTable&quot; type=&quot;xxx.xxx.entity.DemoTable&quot; &gt;
+	@Results(value= {                                            // &lt;id column=&quot;id&quot; property=&quot;id&quot; jdbcType=&quot;BIGINT&quot; /&gt;    
+		 @Result(property = &quot;col3&quot;, column = &quot;col3&quot;, javaType = String.class),//        &lt;result column=&quot;col3&quot; property=&quot;col3&quot; jdbcType=&quot;VARCHAR&quot; /&gt;
+         @Result(property = &quot;col2&quot;, column = &quot;col2&quot;, javaType = String.class),     //   &lt;result column=&quot;col2&quot; property=&quot;col2&quot; jdbcType=&quot;VARCHAR&quot; /&gt;
+         @Result(property = &quot;col1&quot;, column = &quot;col1&quot;, javaType = String.class)    //    &lt;result column=&quot;col1&quot; property=&quot;col1&quot; javaType=&quot;com.neo.enums.UserSexEnum&quot;/&gt;
+	})                                                                            //  &lt;/resultMap&gt;
+	List&lt;DemoTable&gt; allDemoTable();
+}
+
+</code></pre>
+<p>maven</p>
+<pre><code class="language-xml">		&lt;dependency&gt;
+		    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+		    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+		    &lt;version&gt;1.3.1&lt;/version&gt;
+		&lt;/dependency&gt;
+</code></pre>
+<h1><a class="header" href="#jdbctemplete" id="jdbctemplete">jdbctemplete</a></h1>
+<blockquote>
+<p>It simplifies the use of JDBC and helps to avoid common errors. It executes core JDBC workflow, leaving application code to provide SQL and extract results. This class executes SQL queries or updates, initiating iteration over ResultSets and catching JDBC exceptions and translating them to the generic</p>
+</blockquote>
+<pre><code class="language-java">// update
+String sql = &quot;update ...&quot;;
+Object[] args = { ... };
+int[] argTypes = { Types.VARCHAR, Types.VARCHAR, Types.VARCHAR };
+return this.jdbcTemplate.update(sql, args, argTypes);
+
+// for list
+String sql = &quot;select ...&quot;;
+return this.jdbcTemplate.queryForList(sql);
+
+
+// impl import org.springframework.jdbc.core.RowMapper;
+	@Override
+	public Data mapRow(ResultSet rs, int rowNum) throws SQLException {
+		Data d = new Data();
+		student.setValue(rs.getString(&quot;v1&quot;));
+		return d;
+	}
+
+// query mapper
+String sql = &quot;select ...&quot;;
+Object[] args = { sno };
+int[] argTypes = { Types.VARCHAR };
+List&lt;T&gt; studentList = this.jdbcTemplate.query(sql, args, argTypes, new DataMapper());
+
+</code></pre>
+<h4><a class="header" href="#simplejdbctemplate" id="simplejdbctemplate">SimpleJdbcTemplate</a></h4>
+<hr />
+<h4><a class="header" href="#namedparameterjdbctemplate" id="namedparameterjdbctemplate">NamedParameterJdbcTemplate</a></h4>
+<hr />
+<h1><a class="header" href="#mybatisplus" id="mybatisplus">mybatisplus</a></h1>
+<h2><a class="header" href="#activerecord" id="activerecord">ActiveRecord</a></h2>
+<blockquote>
+<p>import com.baomidou.mybatisplus.extension.activerecord.Model;</p>
+</blockquote>
+<pre><code class="language-java">@TableName(&quot;demotable&quot;)
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
+public class DemoTable extends Model&lt;DemoTable&gt; {
+
+    private Long id;
+
+
+    @Override
+    protected Serializable pkVal() {
+
+        return this.id;
+    }
+}
+</code></pre>
+<h1><a class="header" href="#jpa" id="jpa">jpa</a></h1>
+<h2><a class="header" href="#some-bases" id="some-bases">some bases</a></h2>
+<ul>
+<li>Annotation</li>
+<li></li>
+</ul>
+<h2><a class="header" href="#annotation" id="annotation">Annotation</a></h2>
+<pre><code class="language-java">public @interface TestOneAnnotion{
+    
+}
+// then ,we can use on my objs
+@TestOneAnnotion
+public class App{
+    @TestOneAnnotion
+    public static void main(String[] args){
+        
+    }
+}
+</code></pre>
+<ul>
+<li>元注解
+<ul>
+<li>@Retention  <code>means retention on compile 、class loading、jvm runtime</code>  <code>enum RetentionPolicy</code></li>
+<li>@Target <code>scope</code> <code>ElementType</code></li>
+<li>@Documented <code>java doc</code></li>
+<li>@Inherited <code>如果被Inherited 修饰的父类的子类没有被其他注解修饰，则继承本注解</code></li>
+<li>@Repeatable <code>can repeat</code></li>
+</ul>
+</li>
+<li>注解的属性
+<ul>
+<li>类型 ： 基本数据类型、string、class、enum 、 注解、前面的一维数组</li>
+<li>注解属性获取 <code>getAnnotation</code></li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#thread" id="thread">thread</a></h2>
+<ul>
+<li>
+<p>thread</p>
+</li>
+<li>
+<p>runnable</p>
+</li>
+</ul>
+<h2><a class="header" href="#run--start" id="run--start">run &amp; start</a></h2>
+<ul>
+<li>
+<p>extend Thread &amp; implements Runable</p>
+<pre><code class="language-java">public class TDemo1 {
+	public static class MyThread extends Thread {
+		@Override
+		public void run() {
+			System.out.println(&quot;mythread&quot;);
+			System.out.println(Thread.currentThread().getId());
+			
+		}
+		
+	}
+	
+	public static class MyThread1 implements Runnable{
+		@Override
+		public void run() {
+			System.out.println(&quot;mythread1111&quot;);
+			System.out.println(Thread.currentThread().getId());
+			
+		}
+	}
+	 public static void main(String[] args) {
+		new MyThread().start();
+		new Thread(new MyThread1()).start();
+		new Thread(()-&gt;{
+			System.out.println(&quot;inline&quot;);
+			System.out.println(Thread.currentThread().getId());
+		}).start();
+	}
+
+}
+
+</code></pre>
+<pre><code class="language-java">/**
+     * Initializes a Thread.
+     *
+     * @param g the Thread group
+     * @param target the object whose run() method gets called
+     * @param name the name of the new Thread
+     * @param stackSize the desired stack size for the new thread, or
+     *        zero to indicate that this parameter is to be ignored.
+     * @param acc the AccessControlContext to inherit, or
+     *            AccessController.getContext() if null
+     * @param inheritThreadLocals if {@code true}, inherit initial values for
+     *            inheritable thread-locals from the constructing thread
+     */
+    private Thread(ThreadGroup g, Runnable target, String name,
+                   long stackSize, AccessControlContext acc,
+                   boolean inheritThreadLocals) {
+        if (name == null) {
+            throw new NullPointerException(&quot;name cannot be null&quot;);
+        }
+
+        this.name = name;
+
+        Thread parent = currentThread();
+        SecurityManager security = System.getSecurityManager();
+        if (g == null) {
+            /* Determine if it's an applet or not */
+
+            /* If there is a security manager, ask the security manager
+               what to do. */
+            if (security != null) {
+                g = security.getThreadGroup();
+            }
+
+            /* If the security manager doesn't have a strong opinion
+               on the matter, use the parent thread group. */
+            if (g == null) {
+                g = parent.getThreadGroup();
+            }
+        }
+
+        /* checkAccess regardless of whether or not threadgroup is
+           explicitly passed in. */
+        g.checkAccess();
+
+        /*
+         * Do we have the required permissions?
+         */
+        if (security != null) {
+            if (isCCLOverridden(getClass())) {
+                security.checkPermission(
+                        SecurityConstants.SUBCLASS_IMPLEMENTATION_PERMISSION);
+            }
+        }
+
+        g.addUnstarted();
+
+        this.group = g;
+        this.daemon = parent.isDaemon();
+        this.priority = parent.getPriority();
+        if (security == null || isCCLOverridden(parent.getClass()))
+            this.contextClassLoader = parent.getContextClassLoader();
+        else
+            this.contextClassLoader = parent.contextClassLoader;
+        this.inheritedAccessControlContext =
+                acc != null ? acc : AccessController.getContext();
+        this.target = target;
+        setPriority(priority);
+        if (inheritThreadLocals &amp;&amp; parent.inheritableThreadLocals != null)
+            this.inheritableThreadLocals =
+                ThreadLocal.createInheritedMap(parent.inheritableThreadLocals);
+        /* Stash the specified stack size in case the VM cares */
+        this.stackSize = stackSize;
+
+        /* Set thread ID */
+        this.tid = nextThreadID();
+    }
+</code></pre>
+<ul>
+<li>thead 的常用方法</li>
+</ul>
+<pre><code class="language-java">
+
+    currentThread() //静态方法，返回对当前正在执行的线程对象的引用；
+    start()//开始执行线程的方法，java虚拟机会调用线程内的run()方法；
+    yield()//yield在英语里有放弃的意思，同样，这里的yield()指的是当前线程愿意让出对当前处理器的占用。这里需要注意的是，就算当前线程调用了yield()方法，程序在调度的时候，也还有可能继续运行这个线程的；
+    sleep()//静态方法，使当前线程睡眠一段时间；
+    join()//使当前线程等待另一个线程执行完毕之后再继续执行，内部调用的是Object类的wait方法实现的；
+
+</code></pre>
+</li>
+<li>
+<p>Callable &amp; Future</p>
+<pre><code class="language-java">import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+
+public class Task1 implements Callable&lt;Integer&gt;{ 
+	@Override
+	public Integer call() throws Exception {
+		Thread.sleep(1000);
+		return 2;
+	}
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
+		ExecutorService executorService=Executors.newCachedThreadPool();
+		Task1 task1=new Task1();
+		Future&lt;Integer&gt; result = executorService.submit(task1);
+		System.out.println(result.get());
+	}
+}
+
+</code></pre>
+</li>
+<li>
+<p>FutureTask</p>
+<pre><code class="language-java">import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
+
+public class Task2 implements Callable&lt;Integer&gt; {
+	@Override
+	public Integer call() throws Exception {
+		Thread.sleep(1000);
+		return 2;
+	}
+	
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
+		ExecutorService executorService=Executors.newCachedThreadPool();
+		FutureTask&lt;Integer&gt; futureTask=new FutureTask&lt;Integer&gt;(new Task2());
+		executorService.submit(futureTask);
+		System.out.println(futureTask.get());
+	}
+}
+
+</code></pre>
+</li>
+</ul>
+<h2><a class="header" href="#group" id="group">group</a></h2>
+<ul>
+<li>
+<p>线程可以设置优先级 作为建议 <code>getPriority()</code> </p>
+</li>
+<li>
+<p>线程优先级不会大于线程组的优先级</p>
+</li>
+<li>
+<p>Copies into the specified array every active thread in this thread group and its subgroups.
+An invocation of this method behaves in exactly the same way as the invocation
+<code>group.enumerate(threads);</code></p>
+</li>
+<li>
+<p>线程组异常处理 </p>
+<pre><code class="language-java">		ThreadGroup gThreadGroup=new ThreadGroup(&quot;group1&quot;) {
+			public void uncaughtException(Thread t, Throwable e) {
+				System.out.println(t.getName()+&quot;:&quot;+e.getMessage());
+			};
+		};
+</code></pre>
+</li>
+</ul>
+<h2><a class="header" href="#state" id="state">state</a></h2>
+<p><img src="http://concurrent.redspider.group/article/01/imgs/%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE.png" alt="from  redspider" /></p>
+<hr />
+<p>操作系统线程主要有以下三个状态：</p>
+<ul>
+<li>就绪状态(ready)：线程正在等待使用CPU，经调度程序调用之后可进入running状态。</li>
+<li>执行状态(running)：线程正在使用CPU。</li>
+<li>等待状态(waiting): 线程经过等待事件的调用或者正在等待其他资源（如I/O）。</li>
+</ul>
+<p>java的state</p>
+<pre><code class="language-java">public enum State {
+    NEW,
+    RUNNABLE,
+    BLOCKED,
+    WAITING,
+    TIMED_WAITING,
+    TERMINATED;
+}
+</code></pre>
+<hr />
+<ul>
+<li>NEW  <code>new Thread()</code></li>
+<li>TERMINATED <code>执行完</code></li>
+<li>BLOCKED <code>阻塞  等待锁的释放以进入同步区</code></li>
+<li>WAITING <code>如需进入RUNNABLE需要等待唤醒  Object.wait();  Thread.join();LockSupport.park();</code></li>
+<li>TIMED_WAITING <code>超时等待 可以通过notify()/notifyAll()唤醒</code></li>
+<li>RUNNABLE <code>执行中</code></li>
+</ul>
+<p><img src="http://concurrent.redspider.group/article/01/imgs/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE.png" alt="线程状态转换图" /></p>
+<p><strong>Object.wait()</strong></p>
+<blockquote>
+<p>调用wait()方法前线程必须持有对象的锁。</p>
+<p>线程调用wait()方法时，会释放当前的锁，直到有其他线程调用notify()/notifyAll()方法唤醒等待锁的线程。</p>
+<p>需要注意的是，其他线程调用notify()方法只会唤醒单个等待锁的线程，如有有多个线程都在等待这个锁的话不一定会唤醒到之前调用wait()方法的线程。</p>
+<p>同样，调用notifyAll()方法唤醒所有等待锁的线程之后，也不一定会马上把时间片分给刚才放弃锁的那个线程，具体要看系统的调度。</p>
+</blockquote>
+<p><strong>Thread.join()</strong></p>
+<blockquote>
+<p>调用join()方法不会释放锁，会一直等待当前线程执行完毕（转换为TERMINATED状态）。</p>
+</blockquote>
+<p><strong>Thread.sleep(long)</strong></p>
+<blockquote>
+<p>使当前线程睡眠指定时间。需要注意这里的“睡眠”只是暂时使线程停止执行，并不会释放锁。时间到后，线程会重新进入RUNNABLE状态。</p>
+</blockquote>
+<p><strong>Object.wait(long)</strong></p>
+<blockquote>
+<p>wait(long)方法使线程进入TIMED_WAITING状态。这里的wait(long)方法与无参方法wait()相同的地方是，都可以通过其他线程调用notify()或notifyAll()方法来唤醒。</p>
+<p>不同的地方是，有参方法wait(long)就算其他线程不来唤醒它，经过指定时间long之后它会自动唤醒，拥有去争夺锁的资格。</p>
+</blockquote>
+<p><strong>Thread.join(long)</strong></p>
+<blockquote>
+<p>join(long)使当前线程执行指定时间，并且使线程进入TIMED_WAITING状态。</p>
+</blockquote>
+<ul>
+<li>Thread.interrupt()：中断线程。这里的中断线程并不会立即停止线程，而是设置线程的中断状态为true（默认是flase）；</li>
+<li>Thread.interrupted()：测试当前线程是否被中断。线程的中断状态受这个方法的影响，意思是调用一次使线程中断状态设置为true，连续调用两次会使得这个线程的中断状态重新转为false；</li>
+<li>Thread.isInterrupted()：测试当前线程是否被中断。与上面方法不同的是调用这个方法并不会影响线程的中断状态。</li>
+</ul>
+<blockquote>
+<p>在线程中断机制里，当其他线程通知需要被中断的线程后，线程中断的状态被设置为true，但是具体被要求中断的线程要怎么处理，完全由被中断线程自己而定，可以在合适的实际处理中断请求，也可以完全不处理继续执行下去。</p>
+</blockquote>
+<h2><a class="header" href="#lock--sync" id="lock--sync">lock &amp; sync</a></h2>
+<ul>
+<li>
+<p>简单加锁 synchronized <code>对象锁</code></p>
+</li>
+<li>
+<p>wait(),notify(),notifyAll()通信</p>
+</li>
+<li>
+<p>volatile 信号量</p>
+</li>
+<li>
+<p>PipedWriter<code>、 </code>PipedReader<code>、 </code>PipedOutputStream<code>、 </code>PipedInputStream</p>
+<pre><code class="language-java">
+import java.io.IOException;
+import java.io.PipedReader;
+import java.io.PipedWriter;
+
+public class PipeDemo {
+	static class ReadThread implements Runnable{
+		private PipedReader reader;
+		public ReadThread(PipedReader reader ) {
+			this.reader=reader;
+		}
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			System.out.println(&quot;this is reader&quot;);
+			int receive=0;
+			try {
+				while ((receive=reader.read())!=-1) {
+					System.out.println((char)receive);
+				}
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	static class WriterThread implements Runnable{
+		private PipedWriter writer;
+		public WriterThread(PipedWriter writer) {
+			// TODO Auto-generated constructor stub
+			this.writer=writer;
+		}
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			System.out.println(&quot;this is writer&quot;);
+			int send=0;
+			
+			try {
+				writer.write(&quot;test&quot;);
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}finally {
+				try {
+					writer.close();
+				} catch (IOException e2) {
+					// TODO: handle exception
+					e2.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	public static void main(String[] args) throws IOException, InterruptedException {
+		PipedWriter writer=new PipedWriter();
+		PipedReader reader=new PipedReader();
+		writer.connect(reader);
+		new Thread(new ReadThread(reader)).start();
+		Thread.sleep(1000);
+		new Thread(new WriterThread(writer)).start();
+		
+		
+	}
+}
+</code></pre>
+</li>
+<li>
+<p>join() <code>可以使得主线程获得子线程后的某个数据</code></p>
+</li>
+<li>
+<p>sleep() </p>
+<blockquote>
+<ul>
+<li>wait可以指定时间，也可以不指定；而sleep必须指定时间。</li>
+<li>wait释放cpu资源，同时释放锁；sleep释放cpu资源，但是不释放锁，所以易死锁。</li>
+<li>wait必须放在同步块或同步方法中，而sleep可以再任意位置</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>ThreadLocal 本地线程副本</p>
+<blockquote>
+<p>如果开发者希望将类的某个静态变量（user ID或者transaction ID）与线程状态关联，则可以考虑使用ThreadLocal。</p>
+<p>最常见的ThreadLocal使用场景为用来解决数据库连接、Session管理等。数据库连接和Session管理涉及多个复杂对象的初始化和关闭。如果在每个线程中声明一些私有变量来进行操作，那这个线程就变得不那么“轻量”了，需要频繁的创建和关闭连接。</p>
+</blockquote>
+</li>
+</ul>
+<h2><a class="header" href="#关于" id="关于">关于</a></h2>
+<p>https://www.realcpf.cn</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
