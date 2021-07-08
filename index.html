@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人简历1234</title>
     <style>
+        a:link {
+            text-decoration: none;
+        }
         .toxiang {
             background-color: aliceblue;
             color: blue;
@@ -16,7 +19,7 @@
             justify-content:center;
             float: left;
             width: 150px;
-            height: 100px;
+            height: 70px;
             margin-left: 50px;
             margin-top: 50px;
             cursor: pointer;
@@ -31,6 +34,7 @@
             border-style: dotted;
         }
     </style>
+    <script src="./js/html2canvas.min.js"></script>
     <script>
         window.onload=()=>{
             document.querySelectorAll('.openit').forEach(e=>{
@@ -52,7 +56,7 @@
 <div>
   <div style="background-color: rgb(215, 255, 196);width: 250px;height: 750px;float: left;">
     <div class="toxiang">
-        <a class="openit" href="#ainterview@" >简历</a>
+        <a class="openit" href="#ainterview-v3@" >简历</a>
        </div>
     <div class="toxiang">
         <a class="openit" href="#root" >阅读笔记 </a>
@@ -63,16 +67,22 @@
         <div class="toxiang">
             <a class="openit" href="#spring" >spring</a>
         </div>
+        <div class="toxiang" style="color: red;height: 40px;">
+            <a  href="./pdf/ainterview-pdf.pdf" download="刘佳成的简历.pdf" >下载简历</a>
+           </div>
   </div>
    
     <div style="float: left;">
-        <iframe id="mdbook" src="./sososo.html" frameborder="1" width="700px" height="750px"></iframe>
+        <iframe id="mdbook" src="./ainterview-v3.html" frameborder="1" width="700px" height="750px"></iframe>
     </div>
     <div style="float: right;height: 750px;">
         <div style="float: left;">
             <button onclick="saveContent()">
-                保存到本地
+                保存右侧到本地>
             </button>
+            <!-- <button style="float: left;" onclick="saveImg()">
+            《保存左侧到本地
+            </button> -->
         </div>
         <div style="float:left">
             <textarea name="" id="save_content" cols="50" rows="47"></textarea>
@@ -101,6 +111,34 @@
         ele.click();
         document.body.removeChild(ele);
     }
+    function saveImg(){
+        // TODO 截图iframe
+        let date = new Date();
+        let imgName= `保存的内容-[realcpf.cn]-[${date.getFullYear()}-${date.getMonth()}-${date.getDate()}].jpeg`;
+        html2canvas(document.querySelector('#mdbook')).then(canvas=>{
+            dataURIToBlob(imgName,canvas.toDataURL('image/jpeg', 1.0),doDownload)
+        });
+    }
+    function dataURIToBlob(imgName, dataURI, doDownload) {
+        console.log(dataURI)
+        var binStr = atob(dataURI.split(',')[1]),
+            len = binStr.length,
+            arr = new Uint8Array(len);
+        for (var i = 0; i < len; i++) {
+            arr[i] = binStr.charCodeAt(i);
+        }
+        doDownload(imgName, new Blob([arr]));
+    }
+    function doDownload(imgName, blob) {
+        console.log(blob)
+        let ele = document.createElement('a');
+        ele.download=imgName;
+        ele.style.display = "none";
+        ele.href = URL.createObjectURL(blob);
+        document.body.appendChild(ele);
+        ele.click();
+        document.body.removeChild(ele);
+    };
 </script>
 </body>
 </html>
