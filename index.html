@@ -37,10 +37,10 @@
     <script src="./js/html2canvas.min.js"></script>
     <script>
         window.onload=()=>{
-            let s=new String(window.location.protocol)
-            if(!s.includes("https")){
-                window.location.href=new String(window.location.href).replace('http','https')
-            }
+            // let s=new String(window.location.protocol)
+            // if(!s.includes("https")){
+            //     window.location.href=new String(window.location.href).replace('http','https')
+            // }
             document.querySelectorAll('.openit').forEach(e=>{
                 e.addEventListener('click',function(){
                     let h = new String(e.hash).replace('#','').trim()
@@ -68,8 +68,11 @@
        <div class="toxiang">
         <a class="openit" href="#midware" >中间件</a>
        </div>
-        <div class="toxiang">
+        <!-- <div class="toxiang">
             <a class="openit" href="#spring" >spring</a>
+        </div> -->
+        <div class="toxiang">
+            <a class="openit" href="#pcwork" >PC</a>
         </div>
         <div class="toxiang" style="color: red;height: 40px;">
             <a  href="./pdf/ainterview-pdf.pdf" download="刘佳成的简历.pdf" >下载简历</a>
