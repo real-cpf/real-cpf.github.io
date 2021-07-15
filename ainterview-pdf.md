@@ -3,11 +3,9 @@
 
 ### 刘佳成  
 
-
-
-https://www.realcpf.cn
-
 :e-mail:realcpf@163.com                                       
+
+:mobile_phone_off:15227171200
 
 ---
 
@@ -45,6 +43,14 @@ https://www.realcpf.cn
     + IIS
     + tomcat
     + nginx
+
+  + > 脚本策略
+
+    + bash
+    + python
+    + golang
+
+    
 
   + > 运维部署
 
