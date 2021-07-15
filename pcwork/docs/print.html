@@ -1,0 +1,780 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>PC</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> README</a></li><li class="chapter-item expanded "><a href="qt/index.html"><strong aria-hidden="true">2.</strong> Qt</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="qt/component/button.html"><strong aria-hidden="true">2.1.</strong> button</a></li><li class="chapter-item expanded "><a href="qt/component/textbox.html"><strong aria-hidden="true">2.2.</strong> textbox</a></li></ol></li><li class="chapter-item expanded "><a href="qt/tip/index.html"><strong aria-hidden="true">3.</strong> Qt_tip</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="qt/tip/qprop.html"><strong aria-hidden="true">3.1.</strong> qprop</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PC</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#readme" id="readme">README</a></h2>
+<p>应用场景PC</p>
+<h2><a class="header" href="#qt" id="qt">Qt</a></h2>
+<pre><code class="language-c++">/****************************************************************************
+**
+** Copyright (C) 2016 The Qt Company Ltd.
+** Contact: https://www.qt.io/licensing/
+**
+** This file is part of the QtWidgets module of the Qt Toolkit.
+**
+** $QT_BEGIN_LICENSE:LGPL$
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and The Qt Company. For licensing terms
+** and conditions see https://www.qt.io/terms-conditions. For further
+** information use the contact form at https://www.qt.io/contact-us.
+**
+** GNU Lesser General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU Lesser
+** General Public License version 3 as published by the Free Software
+** Foundation and appearing in the file LICENSE.LGPL3 included in the
+** packaging of this file. Please review the following information to
+** ensure the GNU Lesser General Public License version 3 requirements
+** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
+**
+** GNU General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU
+** General Public License version 2.0 or (at your option) the GNU General
+** Public license version 3 or any later version approved by the KDE Free
+** Qt Foundation. The licenses are as published by the Free Software
+** Foundation and appearing in the file LICENSE.GPL2 and LICENSE.GPL3
+** included in the packaging of this file. Please review the following
+** information to ensure the GNU General Public License requirements will
+** be met: https://www.gnu.org/licenses/gpl-2.0.html and
+** https://www.gnu.org/licenses/gpl-3.0.html.
+**
+** $QT_END_LICENSE$
+**
+****************************************************************************/
+</code></pre>
+<h2><a class="header" href="#button" id="button">Button</a></h2>
+<ul>
+<li>Push Button</li>
+<li>Tool Button</li>
+<li>Radio Button</li>
+<li>Check Button</li>
+<li>Command Link Button</li>
+<li>Dialog Button Box</li>
+</ul>
+<p><img src="qt/component/button.assets/image-20210715094211352.png" alt="image-20210715094211352" /></p>
+<h6><a class="header" href="#qpushbutton" id="qpushbutton">QPushButton</a></h6>
+<blockquote>
+<p>Header:  #include <QPushButton></p>
+<p>qmake: QT += widgets Inherits: QAbstractButton </p>
+<p>Inherited By: QCommandLinkButton</p>
+</blockquote>
+<pre><code class="language-c++">#include &lt;QtWidgets/qtwidgetsglobal.h&gt;
+#include &lt;QtWidgets/qabstractbutton.h&gt;
+
+QT_REQUIRE_CONFIG(pushbutton);
+
+QT_BEGIN_NAMESPACE
+
+
+class QPushButtonPrivate; //d指针工具类 Pimpl
+class QMenu;
+class QStyleOptionButton;
+// 继承了 QAbstractButton
+class Q_WIDGETS_EXPORT QPushButton : public QAbstractButton
+{
+……
+
+public:
+    explicit QPushButton(QWidget *parent = nullptr);//parent默认未空
+    explicit QPushButton(const QString &amp;text, QWidget *parent = nullptr);
+    QPushButton(const QIcon&amp; icon, const QString &amp;text, QWidget *parent = nullptr);
+    ~QPushButton();
+
+    QSize sizeHint() const override;
+    QSize minimumSizeHint() const override;
+
+    bool autoDefault() const;
+    void setAutoDefault(bool);
+    bool isDefault() const;
+    void setDefault(bool);
+
+    void setFlat(bool);
+    bool isFlat() const;
+
+public Q_SLOTS:
+#if QT_CONFIG(menu)  // 如果链接了menu库
+    void showMenu();
+#endif
+
+protected:
+    bool event(QEvent *e) override;
+    void paintEvent(QPaintEvent *) override;
+    void keyPressEvent(QKeyEvent *) override;
+    void focusInEvent(QFocusEvent *) override;
+    void focusOutEvent(QFocusEvent *) override;
+    void initStyleOption(QStyleOptionButton *option) const;
+    QPushButton(QPushButtonPrivate &amp;dd, QWidget* parent = nullptr);
+
+public:
+
+private:
+    Q_DISABLE_COPY(QPushButton)
+    Q_DECLARE_PRIVATE(QPushButton)
+#if QT_CONFIG(menu)
+    Q_PRIVATE_SLOT(d_func(), void _q_popupPressed())
+#endif
+};
+
+QT_END_NAMESPACE
+</code></pre>
+<h6><a class="header" href="#qtoolbutton" id="qtoolbutton">QToolButton</a></h6>
+<blockquote>
+<p>Header:  #include <QToolButton></p>
+<p>qmake: QT += widgets </p>
+<p>Inherits: QAbstractButton</p>
+</blockquote>
+<p>注 ：<a href="qt/component/../tip/qprop.html">Q_PROPERTY</a></p>
+<pre><code class="language-c++">#ifndef QTOOLBUTTON_H
+#define QTOOLBUTTON_H
+#include &lt;QtWidgets/qtwidgetsglobal.h&gt;
+#include &lt;QtWidgets/qabstractbutton.h&gt;
+QT_REQUIRE_CONFIG(toolbutton);
+QT_BEGIN_NAMESPACE
+
+class QToolButtonPrivate;
+class QMenu;
+class QStyleOptionToolButton; // Action样式
+
+class Q_WIDGETS_EXPORT QToolButton : public QAbstractButton
+{
+    Q_OBJECT
+    Q_ENUMS(Qt::ToolButtonStyle Qt::ArrowType)
+#if QT_CONFIG(menu) // menu联动
+    Q_PROPERTY(ToolButtonPopupMode popupMode READ popupMode WRITE setPopupMode) // [qprop]
+#endif
+    Q_PROPERTY(Qt::ToolButtonStyle toolButtonStyle READ toolButtonStyle WRITE setToolButtonStyle)
+    Q_PROPERTY(bool autoRaise READ autoRaise WRITE setAutoRaise)
+    Q_PROPERTY(Qt::ArrowType arrowType READ arrowType WRITE setArrowType)
+
+public:
+    enum ToolButtonPopupMode {
+        DelayedPopup,
+        MenuButtonPopup,
+        InstantPopup
+    };
+    Q_ENUM(ToolButtonPopupMode)
+
+    explicit QToolButton(QWidget *parent = nullptr);
+    ~QToolButton();
+
+    QSize sizeHint() const override;
+    QSize minimumSizeHint() const override;
+
+    Qt::ToolButtonStyle toolButtonStyle() const;
+
+    Qt::ArrowType arrowType() const;
+    void setArrowType(Qt::ArrowType type);
+
+#if QT_CONFIG(menu)
+    void setMenu(QMenu* menu);
+    QMenu* menu() const;
+
+    void setPopupMode(ToolButtonPopupMode mode);
+    ToolButtonPopupMode popupMode() const;
+#endif
+
+    QAction *defaultAction() const;
+
+    void setAutoRaise(bool enable);
+    bool autoRaise() const;
+
+public Q_SLOTS:
+#if QT_CONFIG(menu)
+    void showMenu();
+#endif
+    void setToolButtonStyle(Qt::ToolButtonStyle style);
+    void setDefaultAction(QAction *);
+
+Q_SIGNALS:
+    void triggered(QAction *);
+
+protected:
+    bool event(QEvent *e) override;
+    void mousePressEvent(QMouseEvent *) override;
+    void mouseReleaseEvent(QMouseEvent *) override;
+    void paintEvent(QPaintEvent *) override;
+    void actionEvent(QActionEvent *) override;
+
+    void enterEvent(QEvent *) override;
+    void leaveEvent(QEvent *) override;
+    void timerEvent(QTimerEvent *) override;
+    void changeEvent(QEvent *) override;
+
+    bool hitButton(const QPoint &amp;pos) const override;
+    void nextCheckState() override;
+    void initStyleOption(QStyleOptionToolButton *option) const;
+
+private:
+    Q_DISABLE_COPY(QToolButton)
+    Q_DECLARE_PRIVATE(QToolButton)
+#if QT_CONFIG(menu)
+    Q_PRIVATE_SLOT(d_func(), void _q_buttonPressed())
+    Q_PRIVATE_SLOT(d_func(), void _q_buttonReleased())
+    Q_PRIVATE_SLOT(d_func(), void _q_updateButtonDown())
+    Q_PRIVATE_SLOT(d_func(), void _q_menuTriggered(QAction*))
+#endif
+    Q_PRIVATE_SLOT(d_func(), void _q_actionTriggered())
+
+};
+
+QT_END_NAMESPACE
+
+#endif // QTOOLBUTTON_H
+
+</code></pre>
+<h2><a class="header" href="#textbox" id="textbox">textbox</a></h2>
+<h6><a class="header" href="#qtextedit" id="qtextedit">QTextEdit</a></h6>
+<blockquote>
+<p>Header:  #include <QTextEdit></p>
+<p>qmake: QT += widgets </p>
+<p>Inherits: QAbstractScrollArea </p>
+<p>Inherited By: QTextBrowser</p>
+</blockquote>
+<pre><code class="language-c++">
+#ifndef QTEXTEDIT_H
+#define QTEXTEDIT_H
+
+#include &lt;QtWidgets/qtwidgetsglobal.h&gt;
+#include &lt;QtWidgets/qabstractscrollarea.h&gt;
+#include &lt;QtGui/qtextdocument.h&gt;
+#include &lt;QtGui/qtextoption.h&gt;
+#include &lt;QtGui/qtextcursor.h&gt;
+#include &lt;QtGui/qtextformat.h&gt;
+
+QT_REQUIRE_CONFIG(textedit);
+
+QT_BEGIN_NAMESPACE
+
+class QStyleSheet;
+class QTextDocument;
+class QMenu;
+class QTextEditPrivate;
+class QMimeData;
+class QPagedPaintDevice;
+
+class Q_WIDGETS_EXPORT QTextEdit : public QAbstractScrollArea
+{
+    Q_OBJECT
+    Q_DECLARE_PRIVATE(QTextEdit)
+    Q_PROPERTY(AutoFormatting autoFormatting READ autoFormatting WRITE setAutoFormatting)
+    Q_PROPERTY(bool tabChangesFocus READ tabChangesFocus WRITE setTabChangesFocus)
+    Q_PROPERTY(QString documentTitle READ documentTitle WRITE setDocumentTitle)
+    Q_PROPERTY(bool undoRedoEnabled READ isUndoRedoEnabled WRITE setUndoRedoEnabled)
+    Q_PROPERTY(LineWrapMode lineWrapMode READ lineWrapMode WRITE setLineWrapMode)
+    QDOC_PROPERTY(QTextOption::WrapMode wordWrapMode READ wordWrapMode WRITE setWordWrapMode)
+    Q_PROPERTY(int lineWrapColumnOrWidth READ lineWrapColumnOrWidth WRITE setLineWrapColumnOrWidth)
+    Q_PROPERTY(bool readOnly READ isReadOnly WRITE setReadOnly)
+#ifndef QT_NO_TEXTHTMLPARSER
+    Q_PROPERTY(QString html READ toHtml WRITE setHtml NOTIFY textChanged USER true)
+#endif
+    Q_PROPERTY(QString plainText READ toPlainText WRITE setPlainText DESIGNABLE false)
+    Q_PROPERTY(bool overwriteMode READ overwriteMode WRITE setOverwriteMode)
+#if QT_DEPRECATED_SINCE(5, 10)
+    Q_PROPERTY(int tabStopWidth READ tabStopWidth WRITE setTabStopWidth)
+#endif
+    Q_PROPERTY(qreal tabStopDistance READ tabStopDistance WRITE setTabStopDistance)
+    Q_PROPERTY(bool acceptRichText READ acceptRichText WRITE setAcceptRichText)
+    Q_PROPERTY(int cursorWidth READ cursorWidth WRITE setCursorWidth)
+    Q_PROPERTY(Qt::TextInteractionFlags textInteractionFlags READ textInteractionFlags WRITE setTextInteractionFlags)
+    Q_PROPERTY(QTextDocument *document READ document WRITE setDocument DESIGNABLE false)
+    Q_PROPERTY(QString placeholderText READ placeholderText WRITE setPlaceholderText)
+public:
+    enum LineWrapMode {
+        NoWrap,
+        WidgetWidth,
+        FixedPixelWidth,
+        FixedColumnWidth
+    };
+    Q_ENUM(LineWrapMode)
+
+    enum AutoFormattingFlag {
+        AutoNone = 0,
+        AutoBulletList = 0x00000001,
+        AutoAll = 0xffffffff
+    };
+
+    Q_DECLARE_FLAGS(AutoFormatting, AutoFormattingFlag)
+    Q_FLAG(AutoFormatting)
+
+    explicit QTextEdit(QWidget *parent = nullptr);
+    explicit QTextEdit(const QString &amp;text, QWidget *parent = nullptr);
+    virtual ~QTextEdit();
+
+    void setDocument(QTextDocument *document);
+    QTextDocument *document() const;
+
+    void setPlaceholderText(const QString &amp;placeholderText);
+    QString placeholderText() const;
+
+    void setTextCursor(const QTextCursor &amp;cursor);
+    QTextCursor textCursor() const;
+
+    bool isReadOnly() const;
+    void setReadOnly(bool ro);
+
+    void setTextInteractionFlags(Qt::TextInteractionFlags flags);
+    Qt::TextInteractionFlags textInteractionFlags() const;
+
+    qreal fontPointSize() const;
+    QString fontFamily() const;
+    int fontWeight() const;
+    bool fontUnderline() const;
+    bool fontItalic() const;
+    QColor textColor() const;
+    QColor textBackgroundColor() const;
+    QFont currentFont() const;
+    Qt::Alignment alignment() const;
+
+    void mergeCurrentCharFormat(const QTextCharFormat &amp;modifier);
+
+    void setCurrentCharFormat(const QTextCharFormat &amp;format);
+    QTextCharFormat currentCharFormat() const;
+
+    AutoFormatting autoFormatting() const;
+    void setAutoFormatting(AutoFormatting features);
+
+    bool tabChangesFocus() const;
+    void setTabChangesFocus(bool b);
+
+    inline void setDocumentTitle(const QString &amp;title)
+    { document()-&gt;setMetaInformation(QTextDocument::DocumentTitle, title); }
+    inline QString documentTitle() const
+    { return document()-&gt;metaInformation(QTextDocument::DocumentTitle); }
+
+    inline bool isUndoRedoEnabled() const
+    { return document()-&gt;isUndoRedoEnabled(); }
+    inline void setUndoRedoEnabled(bool enable)
+    { document()-&gt;setUndoRedoEnabled(enable); }
+
+    LineWrapMode lineWrapMode() const;
+    void setLineWrapMode(LineWrapMode mode);
+
+    int lineWrapColumnOrWidth() const;
+    void setLineWrapColumnOrWidth(int w);
+
+    QTextOption::WrapMode wordWrapMode() const;
+    void setWordWrapMode(QTextOption::WrapMode policy);
+
+    bool find(const QString &amp;exp, QTextDocument::FindFlags options = QTextDocument::FindFlags());
+#ifndef QT_NO_REGEXP
+    bool find(const QRegExp &amp;exp, QTextDocument::FindFlags options = QTextDocument::FindFlags());
+#endif
+
+    QString toPlainText() const;
+#ifndef QT_NO_TEXTHTMLPARSER
+    QString toHtml() const;
+#endif
+
+    void ensureCursorVisible();
+
+    Q_INVOKABLE virtual QVariant loadResource(int type, const QUrl &amp;name);
+#ifndef QT_NO_CONTEXTMENU
+    QMenu *createStandardContextMenu();
+    QMenu *createStandardContextMenu(const QPoint &amp;position);
+#endif
+
+    QTextCursor cursorForPosition(const QPoint &amp;pos) const;
+    QRect cursorRect(const QTextCursor &amp;cursor) const;
+    QRect cursorRect() const;
+
+    QString anchorAt(const QPoint&amp; pos) const;
+
+    bool overwriteMode() const;
+    void setOverwriteMode(bool overwrite);
+
+#if QT_DEPRECATED_SINCE(5, 10)
+    QT_DEPRECATED int tabStopWidth() const;
+    QT_DEPRECATED void setTabStopWidth(int width);
+#endif
+
+    qreal tabStopDistance() const;
+    void setTabStopDistance(qreal distance);
+
+    int cursorWidth() const;
+    void setCursorWidth(int width);
+
+    bool acceptRichText() const;
+    void setAcceptRichText(bool accept);
+
+    struct ExtraSelection
+    {
+        QTextCursor cursor;
+        QTextCharFormat format;
+    };
+    void setExtraSelections(const QList&lt;ExtraSelection&gt; &amp;selections);
+    QList&lt;ExtraSelection&gt; extraSelections() const;
+
+    void moveCursor(QTextCursor::MoveOperation operation, QTextCursor::MoveMode mode = QTextCursor::MoveAnchor);
+
+    bool canPaste() const;
+
+    void print(QPagedPaintDevice *printer) const;
+
+    QVariant inputMethodQuery(Qt::InputMethodQuery property) const override;
+    Q_INVOKABLE QVariant inputMethodQuery(Qt::InputMethodQuery query, QVariant argument) const;
+
+public Q_SLOTS:
+    void setFontPointSize(qreal s);
+    void setFontFamily(const QString &amp;fontFamily);
+    void setFontWeight(int w);
+    void setFontUnderline(bool b);
+    void setFontItalic(bool b);
+    void setTextColor(const QColor &amp;c);
+    void setTextBackgroundColor(const QColor &amp;c);
+    void setCurrentFont(const QFont &amp;f);
+    void setAlignment(Qt::Alignment a);
+
+    void setPlainText(const QString &amp;text);
+#ifndef QT_NO_TEXTHTMLPARSER
+    void setHtml(const QString &amp;text);
+#endif
+    void setText(const QString &amp;text);
+
+#ifndef QT_NO_CLIPBOARD
+    void cut();
+    void copy();
+    void paste();
+#endif
+
+    void undo();
+    void redo();
+
+    void clear();
+    void selectAll();
+
+    void insertPlainText(const QString &amp;text);
+#ifndef QT_NO_TEXTHTMLPARSER
+    void insertHtml(const QString &amp;text);
+#endif // QT_NO_TEXTHTMLPARSER
+
+    void append(const QString &amp;text);
+
+    void scrollToAnchor(const QString &amp;name);
+
+    void zoomIn(int range = 1);
+    void zoomOut(int range = 1);
+
+Q_SIGNALS:
+    void textChanged();
+    void undoAvailable(bool b);
+    void redoAvailable(bool b);
+    void currentCharFormatChanged(const QTextCharFormat &amp;format);
+    void copyAvailable(bool b);
+    void selectionChanged();
+    void cursorPositionChanged();
+
+protected:
+    virtual bool event(QEvent *e) override;
+    virtual void timerEvent(QTimerEvent *e) override;
+    virtual void keyPressEvent(QKeyEvent *e) override;
+    virtual void keyReleaseEvent(QKeyEvent *e) override;
+    virtual void resizeEvent(QResizeEvent *e) override;
+    virtual void paintEvent(QPaintEvent *e) override;
+    virtual void mousePressEvent(QMouseEvent *e) override;
+    virtual void mouseMoveEvent(QMouseEvent *e) override;
+    virtual void mouseReleaseEvent(QMouseEvent *e) override;
+    virtual void mouseDoubleClickEvent(QMouseEvent *e) override;
+    virtual bool focusNextPrevChild(bool next) override;
+#ifndef QT_NO_CONTEXTMENU
+    virtual void contextMenuEvent(QContextMenuEvent *e) override;
+#endif
+#if QT_CONFIG(draganddrop)
+    virtual void dragEnterEvent(QDragEnterEvent *e) override;
+    virtual void dragLeaveEvent(QDragLeaveEvent *e) override;
+    virtual void dragMoveEvent(QDragMoveEvent *e) override;
+    virtual void dropEvent(QDropEvent *e) override;
+#endif
+    virtual void focusInEvent(QFocusEvent *e) override;
+    virtual void focusOutEvent(QFocusEvent *e) override;
+    virtual void showEvent(QShowEvent *) override;
+    virtual void changeEvent(QEvent *e) override;
+#if QT_CONFIG(wheelevent)
+    virtual void wheelEvent(QWheelEvent *e) override;
+#endif
+
+    virtual QMimeData *createMimeDataFromSelection() const;
+    virtual bool canInsertFromMimeData(const QMimeData *source) const;
+    virtual void insertFromMimeData(const QMimeData *source);
+
+    virtual void inputMethodEvent(QInputMethodEvent *) override;
+
+    QTextEdit(QTextEditPrivate &amp;dd, QWidget *parent);
+
+    virtual void scrollContentsBy(int dx, int dy) override;
+    virtual void doSetTextCursor(const QTextCursor &amp;cursor);
+
+    void zoomInF(float range);
+
+private:
+    Q_DISABLE_COPY(QTextEdit)
+    Q_PRIVATE_SLOT(d_func(), void _q_repaintContents(const QRectF &amp;r))
+    Q_PRIVATE_SLOT(d_func(), void _q_currentCharFormatChanged(const QTextCharFormat &amp;))
+    Q_PRIVATE_SLOT(d_func(), void _q_adjustScrollbars())
+    Q_PRIVATE_SLOT(d_func(), void _q_ensureVisible(const QRectF &amp;))
+    Q_PRIVATE_SLOT(d_func(), void _q_cursorPositionChanged())
+    friend class QTextEditControl;
+    friend class QTextDocument;
+    friend class QWidgetTextControl;
+};
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(QTextEdit::AutoFormatting)
+
+QT_END_NAMESPACE
+
+#endif // QTEXTEDIT_H
+
+</code></pre>
+<h2><a class="header" href="#sometip" id="sometip">sometip</a></h2>
+<h2><a class="header" href="#qprop" id="qprop">Qprop</a></h2>
+<pre><code class="language-tex"> READ fun：定义了读取属性的接口fun，fun必须返回属性的类型或者属性同类型引用；fun不能带参数。
+ WRITE fun：定义了设置属相的接口fun，fun没有返回值，必须带有一个参数，传值或者传引用，参数类型与属相类型相同。
+ MEMBER var：MEMBER指明了成员变量var即可读也可写的，相当于同时使用了READ和WRITE关键字。不定义READ，那么必须定义MEMBER；定义了MEMBER，仍可以使用READ或者WRITE控制访问接口。
+</code></pre>
+<p>​	</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
