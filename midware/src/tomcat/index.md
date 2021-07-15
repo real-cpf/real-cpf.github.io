@@ -6,9 +6,9 @@
 
 
 
-[Bootstrap](/#)
+[Bootstrap](../bootstrap/index.md)
 
-[Catalina](/#)
+[Catalina](../catalina/index.md)
 
 [Server]
 

@@ -8,6 +8,12 @@
 + [Qt_tip](./qt/tip/index.md)
 
   + [qprop](./qt/tip/qprop.md)
+  + [moc](./qt/tip/moc.md)
+  + [qprivateslot](./qt/tip/qprivateslot.md)
   
   ​	
+  
++ [win](./win/index.md)
+
+  
 

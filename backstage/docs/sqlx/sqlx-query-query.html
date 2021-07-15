@@ -1,0 +1,428 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>query::Query - backstage</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">前言</a></li><li class="chapter-item expanded "><a href="../sqlx/index.html"><strong aria-hidden="true">1.</strong> Sqlx</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../sqlx/sqlx-rs.html"><strong aria-hidden="true">1.1.</strong> sqlx-rs</a></li><li class="chapter-item expanded "><a href="../sqlx/sqlx-query-query.html" class="active"><strong aria-hidden="true">1.2.</strong> query::Query</a></li><li class="chapter-item expanded "><a href="../sqlx/sqlx-ping.html"><strong aria-hidden="true">1.3.</strong> ping</a></li><li class="chapter-item expanded "><a href="../sqlx/sqlx-fetch_all.html"><strong aria-hidden="true">1.4.</strong> fetch_all</a></li><li class="chapter-item expanded "><a href="../sqlx/sqlx-fromrow.html"><strong aria-hidden="true">1.5.</strong> FromRow</a></li></ol></li><li class="chapter-item expanded "><a href="../stream/index.html"><strong aria-hidden="true">2.</strong> UTF-BOM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stream/page1.html"><strong aria-hidden="true">2.1.</strong> utf-bom</a></li></ol></li><li class="chapter-item expanded "><a href="../aop/index.html"><strong aria-hidden="true">3.</strong> AOP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../aop/java-proxy.html"><strong aria-hidden="true">3.1.</strong> java-proxy</a></li></ol></li><li class="chapter-item expanded "><a href="../bloomfilter/index.html"><strong aria-hidden="true">4.</strong> bloomfilter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../bloomfilter/java-bloomfilter.html"><strong aria-hidden="true">4.1.</strong> java-bloomfilter</a></li></ol></li><li class="chapter-item expanded "><a href="../cache/index.html"><strong aria-hidden="true">5.</strong> cache</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cache/cache-policy.html"><strong aria-hidden="true">5.1.</strong> cache-policy</a></li></ol></li><li class="chapter-item expanded "><a href="../verification-random/index.html"><strong aria-hidden="true">6.</strong> verification-random</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../verification-random/ThreadLocalRandom.html"><strong aria-hidden="true">6.1.</strong> ThreadLocalRandom</a></li><li class="chapter-item expanded "><a href="../verification-random/Graphics2D.html"><strong aria-hidden="true">6.2.</strong> ThreadLocalRandom</a></li></ol></li><li class="chapter-item expanded "><a href="../scheduler/index.html"><strong aria-hidden="true">7.</strong> scheduler</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scheduler/what-does-scheduler-need.html"><strong aria-hidden="true">7.1.</strong> what-does-scheduler-need</a></li></ol></li><li class="chapter-item expanded "><a href="../security/index.html"><strong aria-hidden="true">8.</strong> security</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../security/java-security.html"><strong aria-hidden="true">8.1.</strong> java-security</a></li></ol></li><li class="chapter-item expanded "><a href="../sqldriver/index.html"><strong aria-hidden="true">9.</strong> sqldriver</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../sqldriver/jdbc1.html"><strong aria-hidden="true">9.1.</strong> db mate info</a></li></ol></li><li class="chapter-item expanded "><a href="../datafeature/index.html"><strong aria-hidden="true">10.</strong> datafeature</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../datafeature/deterministic-finite-automaton.html"><strong aria-hidden="true">10.1.</strong> deterministic-finite-automaton</a></li></ol></li><li class="chapter-item expanded "><a href="../bit/index.html"><strong aria-hidden="true">11.</strong> bit &amp; ^</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../bit/base.html"><strong aria-hidden="true">11.1.</strong> base</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">backstage</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#queryquery" id="queryquery">query::Query</a></h1>
+<div style="display:none">rust-tag-cnVzdC10YWc=</div>
+<p><a href="https://github.com/ChenPufeng/sqlx/blob/77cdafe08a11afee2bf72e85afecd7317f6671df/sqlx-core/src/query.rs#L17">Query</a></p>
+<pre><code class="language-rust no_run noplaypen">/// Raw SQL query with bind parameters. Returned by [`query`][crate::query::query].
+#[must_use = &quot;query must be executed to affect database&quot;]
+pub struct Query&lt;'q, DB: Database, A&gt; {
+    pub(crate) statement: Either&lt;&amp;'q str, &amp;'q &lt;DB as HasStatement&lt;'q&gt;&gt;::Statement&gt;,
+    pub(crate) arguments: Option&lt;A&gt;,
+    pub(crate) database: PhantomData&lt;DB&gt;,
+    pub(crate) persistent: bool,
+}
+
+/// Make a SQL query.
+pub fn query&lt;DB&gt;(sql: &amp;str) -&gt; Query&lt;'_, DB, &lt;DB as HasArguments&lt;'_&gt;&gt;::Arguments&gt;
+where
+    DB: Database,
+{
+    Query {
+        //Zero-sized type used to mark things that &quot;act like&quot; they own a T.
+        //Adding a PhantomData&lt;T&gt; field to your type tells the compiler that 
+        //your type acts as though it stores a value of type T, even though it doesn't really. 
+        //This information is used when computing certain safety properties.
+        database: PhantomData,
+        arguments: Some(Default::default()),
+        //The enum Either with variants Left and Right is a general purpose sum type with two cases.
+        //The Either type is symmetric and treats its variants the same way, without preference.
+        //(For representing success or error, use the regular Result enum instead.)
+        statement: Either::Left(sql),
+        persistent: true,
+    }
+}
+</code></pre>
+<p><a href="https://github.com/ChenPufeng/sqlx/blob/77cdafe08a11afee2bf72e85afecd7317f6671df/sqlx-core/src/query.rs#L102">try_map</a></p>
+<pre><code class="language-rust no_run noplaypen">
+
+<span class="boring">impl&lt;'q, DB, A: Send&gt; Query&lt;'q, DB, A&gt;
+</span><span class="boring">where
+</span><span class="boring">   DB: Database,
+</span><span class="boring">   A: 'q + IntoArguments&lt;'q, DB&gt;,
+</span><span class="boring">{
+</span>
+    /// Map each row in the result to another type.
+    ///
+    /// See [`try_map`](Query::try_map) for a fallible version of this method.
+    ///
+    /// The [`query_as`](super::query_as::query_as) method will construct a mapped query using
+    /// a [`FromRow`](super::from_row::FromRow) implementation.
+    #[inline]
+    pub fn map&lt;F, O&gt;(self, f: F) -&gt; Map&lt;'q, DB, impl TryMapRow&lt;DB, Output = O&gt;, A&gt;
+    where
+        F: MapRow&lt;DB, Output = O&gt;,
+        O: Unpin,
+    {
+        self.try_map(MapRowAdapter(f))
+    }
+<span class="boring">}
+</span></code></pre>
+<p><a href="https://github.com/ChenPufeng/sqlx/blob/77cdafe08a11afee2bf72e85afecd7317f6671df/sqlx-core/src/query.rs#L319">fetch_one</a></p>
+<pre><code class="language-rust no_run noplaypen">
+<span class="boring">impl&lt;'q, DB, A: Send&gt; Query&lt;'q, DB, A&gt;
+</span><span class="boring">where
+</span><span class="boring">    DB: Database,
+</span><span class="boring">    A: 'q + IntoArguments&lt;'q, DB&gt;,
+</span><span class="boring">{
+</span>
+
+   /// Execute the query and returns exactly one row.
+    pub async fn fetch_one&lt;'e, 'c: 'e, E&gt;(self, executor: E) -&gt; Result&lt;O, Error&gt;
+    where
+        'q: 'e,
+        E: 'e + Executor&lt;'c, Database = DB&gt;,
+        DB: 'e,
+        F: 'e,
+        O: 'e,
+    {
+        self.fetch_optional(executor)
+            .and_then(|row| match row {
+                Some(row) =&gt; future::ok(row),
+                None =&gt; future::err(Error::RowNotFound),
+            })
+            .await
+    }
+
+    /// Execute the query and returns at most one row.
+    pub async fn fetch_optional&lt;'e, 'c: 'e, E&gt;(mut self, executor: E) -&gt; Result&lt;Option&lt;O&gt;, Error&gt;
+    where
+        'q: 'e,
+        E: 'e + Executor&lt;'c, Database = DB&gt;,
+        DB: 'e,
+        F: 'e,
+        O: 'e,
+    {
+        //  executor.fetch_optional need impl with target db like
+        let row = executor.fetch_optional(self.inner).await?; pg、mysql、sqlite
+
+        if let Some(row) = row {
+            self.mapper.try_map_row(row).map(Some)
+        } else {
+            Ok(None)
+        }
+    }
+<span class="boring">}
+</span></code></pre>
+<p>fetch_optional</p>
+<pre><code class="language-rust no_run noplaypen">    fn fetch_optional&lt;'e, 'q: 'e, E: 'q&gt;(
+        self,
+        mut query: E,
+    ) -&gt; BoxFuture&lt;'e, Result&lt;Option&lt;AnyRow&gt;, Error&gt;&gt;
+    where
+        'c: 'e,
+        E: Execute&lt;'q, Self::Database&gt;,
+    {
+        let arguments = query.take_arguments();
+        let query = query.sql();
+
+        Box::pin(async move {
+            Ok(match &amp;mut self.0 {
+                #[cfg(feature = &quot;postgres&quot;)]
+                AnyConnectionKind::Postgres(conn) =&gt; conn
+                    .fetch_optional((query, arguments.map(Into::into)))
+                    .await?
+                    .map(Into::into),
+
+                #[cfg(feature = &quot;mysql&quot;)]
+                AnyConnectionKind::MySql(conn) =&gt; conn
+                    .fetch_optional((query, arguments.map(Into::into)))
+                    .await?
+                    .map(Into::into),
+
+                #[cfg(feature = &quot;sqlite&quot;)]
+                AnyConnectionKind::Sqlite(conn) =&gt; conn
+                    .fetch_optional((query, arguments.map(Into::into)))
+                    .await?
+                    .map(Into::into),
+
+                #[cfg(feature = &quot;mssql&quot;)]
+                AnyConnectionKind::Mssql(conn) =&gt; conn
+                    .fetch_optional((query, arguments.map(Into::into)))
+                    .await?
+                    .map(Into::into),
+            })
+        })
+    }
+</code></pre>
+<p><a href="https://github.com/ChenPufeng/sqlx/blob/77cdafe08a11afee2bf72e85afecd7317f6671df/sqlx-core/src/query.rs#L447">map_row</a></p>
+<pre><code class="language-rust no_run noplaypen"><span class="boring">#[allow(unused_macros)]
+</span>macro_rules! impl_map_row {
+    ($DB:ident, $R:ident) =&gt; {
+        impl&lt;O: Unpin, F&gt; crate::query::MapRow&lt;$DB&gt; for F
+        where
+            F: Send + FnMut($R) -&gt; O,
+        {
+            type Output = O;
+
+            fn map_row(&amp;mut self, row: $R) -&gt; O {
+                (self)(row)
+            }
+        }
+
+        impl&lt;O: Unpin, F&gt; crate::query::TryMapRow&lt;$DB&gt; for F
+        where
+            F: Send + FnMut($R) -&gt; Result&lt;O, crate::error::Error&gt;,
+        {
+            type Output = O;
+
+            fn try_map_row(&amp;mut self, row: $R) -&gt; Result&lt;O, crate::error::Error&gt; {
+                (self)(row)
+            }
+        }
+    };
+}
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../sqlx/sqlx-rs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../sqlx/sqlx-ping.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../sqlx/sqlx-rs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../sqlx/sqlx-ping.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

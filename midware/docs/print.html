@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">前言</a></li><li class="chapter-item expanded "><a href="tomcat/index.html"><strong aria-hidden="true">1.</strong> tomcat</a></li><li class="chapter-item expanded "><a href="catalina/index.html"><strong aria-hidden="true">2.</strong> catalina</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tomcat/util/digester.html"><strong aria-hidden="true">2.1.</strong> startup from xml</a></li></ol></li><li class="chapter-item expanded "><a href="ABOUT.html">关于</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">前言</a></li><li class="chapter-item expanded "><a href="tomcat/index.html"><strong aria-hidden="true">1.</strong> tomcat</a></li><li class="chapter-item expanded "><a href="catalina/index.html"><strong aria-hidden="true">2.</strong> catalina</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tomcat/util/digester.html"><strong aria-hidden="true">2.1.</strong> startup from xml</a></li></ol></li><li class="chapter-item expanded "><a href="bootstrap/index.html"><strong aria-hidden="true">3.</strong> Bootstrap</a></li><li class="chapter-item expanded "><a href="nginx/index.html"><strong aria-hidden="true">4.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="nginx/safe.html"><strong aria-hidden="true">5.</strong> Nginx安全策略</a></li><li class="chapter-item expanded "><a href="nginx/varindex.html"><strong aria-hidden="true">6.</strong> Nginx内置变量</a></li><li class="chapter-item expanded affix "><a href="ABOUT.html">关于</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,9 +166,6 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#readme" id="readme">README</a></h1>
-<blockquote>
-<p>mid ware</p>
-</blockquote>
 <h3><a class="header" href="#tomcat" id="tomcat">tomcat</a></h3>
 <h3><a class="header" href="#nginx" id="nginx">nginx</a></h3>
 <h1><a class="header" href="#tomcat-1" id="tomcat-1">tomcat</a></h1>
@@ -176,8 +173,8 @@
 <p><a href="https://tomcat.apache.org/">Apache Tomcat®</a></p>
 </blockquote>
 <hr />
-<p><a href="tomcat//#">Bootstrap</a></p>
-<p><a href="tomcat//#">Catalina</a></p>
+<p><a href="tomcat/../bootstrap/index.html">Bootstrap</a></p>
+<p><a href="tomcat/../catalina/index.html">Catalina</a></p>
 <p>[Server]</p>
 <p>[Service]</p>
 <p>[Executer]</p>
@@ -652,6 +649,57 @@ Should do the same thing as Embedded, but using a server.xml file.
                             &quot;org.apache.tomcat.util.http.CookieProcessor&quot;);
     }
 </code></pre>
+<h2><a class="header" href="#bootstrap" id="bootstrap">bootstrap</a></h2>
+<h2><a class="header" href="#nginx-1" id="nginx-1">nginx</a></h2>
+<p><a href="https://www.nginx.org/">Nginx</a></p>
+<p>nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by <a href="http://sysoev.ru/en/">Igor Sysoev</a>. For a long time, it has been running on many heavily loaded Russian sites including <a href="http://www.yandex.ru/">Yandex</a>, <a href="http://mail.ru/">Mail.Ru</a>, <a href="http://vk.com/">VK</a>, and <a href="http://www.rambler.ru/">Rambler</a>. According to Netcraft, nginx served or proxied <a href="https://news.netcraft.com/archives/2021/06/29/june-2021-web-server-survey.html">22.84% busiest sites in June 2021</a>. Here are some of the success stories: <a href="https://blogs.dropbox.com/tech/2017/09/optimizing-web-servers-for-high-throughput-and-low-latency/">Dropbox</a>, <a href="https://openconnect.netflix.com/en/software/">Netflix</a>, <a href="https://www.nginx.com/case-studies/nginx-wordpress-com/">Wordpress.com</a>, <a href="http://blog.fastmail.fm/2007/01/04/webimappop-frontend-proxies-changed-to-nginx/">FastMail.FM</a>.</p>
+<p>The sources and documentation are distributed under the <a href="https://nginx.org/LICENSE">2-clause BSD-like license</a>.</p>
+<p>Commercial support is available from <a href="https://www.nginx.com/">Nginx, Inc.</a></p>
+<h2><a class="header" href="#安全策略" id="安全策略">安全策略</a></h2>
+<h4><a class="header" href="#隐藏版本号" id="隐藏版本号">隐藏版本号</a></h4>
+<p><code>server_tokens off;</code></p>
+<h4><a class="header" href="#ssl证书" id="ssl证书">SSL证书</a></h4>
+<pre><code class="language-nginx">server {
+    listen       443 ssl; # 1.5之前的版本要单独加  ssl on;  
+    server_name  domain;
+	ssl_certificate     cert/xxx.pem;   
+	ssl_certificate_key  cert/xxx.key;    
+    ssl_session_cache    shared:SSL:1m;
+    ssl_session_timeout  5m;        # session
+    # 指定算法
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+   # I mentioned how you negotiate which cipher you choose; you can prefer the client’s choice or the server’s choice. it’s always better to prefer the server’s choice. So there’s a directive here:  – always turn this on. ssl_prefer_server_ciphers
+    ssl_prefer_server_ciphers  on;
+    
+}
+</code></pre>
+<h4><a class="header" href="#禁止不安全的请求" id="禁止不安全的请求">禁止不安全的请求</a></h4>
+<pre><code class="language-nginx">if($request_method !~ ^(GET|POST)$){
+    return 405;
+}
+</code></pre>
+<h4><a class="header" href="#访问白名单" id="访问白名单">访问白名单</a></h4>
+<pre><code class="language-nginx">location / {
+    allow 127.0.0.1;
+    deny all;
+}
+</code></pre>
+<h2><a class="header" href="#varindex" id="varindex">varindex</a></h2>
+<p><a href="http://nginx.org/en/docs/varindex.html">Alphabetical index of variables (nginx.org)</a></p>
+<pre><code class="language-nginx">$args # raw pars
+$content_length # header.Content-length
+$content_type   # header.Content-Type
+$host           # header host
+$http_user_agent #userAgent
+$http_cookie    # cookies
+$request_method  # action
+$request_protocal  # HTTP/1.1 HTTP/2.0
+$scheme          # http https 
+$request_uri     # /uri
+
+
+
+</code></pre>
 <h1><a class="header" href="#about" id="about">ABOUT</a></h1>
 <blockquote>
 <p>about</p>
@@ -679,6 +727,21 @@ Should do the same thing as Embedded, but using a server.xml file.
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

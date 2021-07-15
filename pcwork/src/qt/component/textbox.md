@@ -10,7 +10,7 @@
 >
 > Inherited By: QTextBrowser
 
-
+[Q_PRIVATE_SLOT](../tip/qprivateslot.md)
 
 ```c++
 

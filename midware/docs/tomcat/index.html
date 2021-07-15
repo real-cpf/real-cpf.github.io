@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">前言</a></li><li class="chapter-item expanded "><a href="../tomcat/index.html" class="active"><strong aria-hidden="true">1.</strong> tomcat</a></li><li class="chapter-item expanded "><a href="../catalina/index.html"><strong aria-hidden="true">2.</strong> catalina</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tomcat/util/digester.html"><strong aria-hidden="true">2.1.</strong> startup from xml</a></li></ol></li><li class="chapter-item expanded "><a href="../ABOUT.html">关于</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">前言</a></li><li class="chapter-item expanded "><a href="../tomcat/index.html" class="active"><strong aria-hidden="true">1.</strong> tomcat</a></li><li class="chapter-item expanded "><a href="../catalina/index.html"><strong aria-hidden="true">2.</strong> catalina</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tomcat/util/digester.html"><strong aria-hidden="true">2.1.</strong> startup from xml</a></li></ol></li><li class="chapter-item expanded "><a href="../bootstrap/index.html"><strong aria-hidden="true">3.</strong> Bootstrap</a></li><li class="chapter-item expanded "><a href="../nginx/index.html"><strong aria-hidden="true">4.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../nginx/safe.html"><strong aria-hidden="true">5.</strong> Nginx安全策略</a></li><li class="chapter-item expanded "><a href="../nginx/varindex.html"><strong aria-hidden="true">6.</strong> Nginx内置变量</a></li><li class="chapter-item expanded affix "><a href="../ABOUT.html">关于</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -168,8 +168,8 @@
 <p><a href="https://tomcat.apache.org/">Apache Tomcat®</a></p>
 </blockquote>
 <hr />
-<p><a href="/#">Bootstrap</a></p>
-<p><a href="/#">Catalina</a></p>
+<p><a href="../bootstrap/index.html">Bootstrap</a></p>
+<p><a href="../catalina/index.html">Catalina</a></p>
 <p>[Server]</p>
 <p>[Service]</p>
 <p>[Executer]</p>
@@ -229,6 +229,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

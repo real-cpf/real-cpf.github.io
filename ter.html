@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>terminal</title>
+    <style>
+        .ter-main{
+            background-color: black;
+            color: #68e668;
+            font-size: x-large;
+        }
+    </style>
+    <script>
+        window.onload=()=>{
+            function execMyCmd(cmdStr){
+                if(cmdStr==='cls'||cmdStr==='clear'){
+                    return '~'
+                }else if(cmdStr==='help'){
+                    return '欢迎来到realcpf.cn \n Usage: \n \t\t ls get the dictionary you can explore \n \t\t clear or cls can clear the screen \n\t\t click left content you can see what you want'
+                }else if(cmdStr==='ls'){
+                    return ' backstage \n midway \n PC \n web'
+                }else if(cmdStr==='ls -l'){
+                    return 'drwxrwxrwx  1 anyone  anyone  1024 2021年7月15日 backstage\ndrwxrwxrwx  1 anyone  anyone  1024 2021年7月15日 midway\ndrwxrwxrwx  1 anyone  anyone  1024 2021年7月15日 PC\ndrwxrwxrwx  1 anyone  anyone  1024 2021年7月15日 web'
+                }else{
+                    return 'function not yet'
+                }
+            }
+            
+            let main = document.querySelector('#main');
+            main.addEventListener('keyup',(e)=>{
+                console.log(e.code)
+                if(e.code==='Enter'){
+                    let preContext=new String(main.value)
+                    let lastIndex=preContext.lastIndexOf('>');
+                    let cmd = preContext.substring(lastIndex+1);
+                    let cmdStr= new String(cmd).trim()
+                    cmdStr=cmdStr.replace(/\s+/g,' ');
+                    let res=execMyCmd(cmdStr);
+                    let cmdListStr=localStorage.getItem('cmd')
+                    if(!cmdListStr){
+                        localStorage.setItem('cmd',cmdStr)
+                    }else{
+                        localStorage.setItem('cmd',cmdListStr+'>'+cmdStr)
+                    }
+                    
+                    localStorage.setItem('upcount',0)
+                    let newContent=new String("");
+                    if(res==="~"){
+                        newContent=">";
+                    }else{
+                        newContent=preContext+res+'\n>'
+                    }
+                    main.value=newContent
+
+                }else if(e.code==='ArrowUp'){
+                    let cmdListStr=localStorage.getItem('cmd')
+                    let upcountStr=localStorage.getItem('upcount')
+                    let upcount=parseInt(upcountStr)
+                    let cmdList = cmdListStr.split('>')
+                    if(upcount>=cmdList.length){
+                        upcount=cmdList.length-1;
+                    }
+                    let preContext=new String(main.value)
+                    let lastIndex=preContext.lastIndexOf('>');
+                    main.value=preContext.substring(0,lastIndex+1)+cmdList[upcount]
+                    main.focus()
+                    localStorage.setItem('upcount',upcount+1)
+                    
+                }
+                
+            })
+            main.value='           welcome! \n>'
+        }
+    </script>
+</head>
+<body>
+    <textarea name="" id="main" cols="60" rows="30" class="ter-main"></textarea>
+</body>
+</html>

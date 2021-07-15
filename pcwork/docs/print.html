@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> README</a></li><li class="chapter-item expanded "><a href="qt/index.html"><strong aria-hidden="true">2.</strong> Qt</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="qt/component/button.html"><strong aria-hidden="true">2.1.</strong> button</a></li><li class="chapter-item expanded "><a href="qt/component/textbox.html"><strong aria-hidden="true">2.2.</strong> textbox</a></li></ol></li><li class="chapter-item expanded "><a href="qt/tip/index.html"><strong aria-hidden="true">3.</strong> Qt_tip</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="qt/tip/qprop.html"><strong aria-hidden="true">3.1.</strong> qprop</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> README</a></li><li class="chapter-item expanded "><a href="qt/index.html"><strong aria-hidden="true">2.</strong> Qt</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="qt/component/button.html"><strong aria-hidden="true">2.1.</strong> button</a></li><li class="chapter-item expanded "><a href="qt/component/textbox.html"><strong aria-hidden="true">2.2.</strong> textbox</a></li></ol></li><li class="chapter-item expanded "><a href="qt/tip/index.html"><strong aria-hidden="true">3.</strong> Qt_tip</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="qt/tip/qprop.html"><strong aria-hidden="true">3.1.</strong> qprop</a></li><li class="chapter-item expanded "><a href="qt/tip/moc.html"><strong aria-hidden="true">3.2.</strong> moc</a></li><li class="chapter-item expanded "><a href="qt/tip/qprivateslot.html"><strong aria-hidden="true">3.3.</strong> qprivateslot</a></li></ol></li><li class="chapter-item expanded "><a href="win/index.html"><strong aria-hidden="true">4.</strong> win</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -395,6 +395,7 @@ QT_END_NAMESPACE
 <p>Inherits: QAbstractScrollArea </p>
 <p>Inherited By: QTextBrowser</p>
 </blockquote>
+<p><a href="qt/component/../tip/qprivateslot.html">Q_PRIVATE_SLOT</a></p>
 <pre><code class="language-c++">
 #ifndef QTEXTEDIT_H
 #define QTEXTEDIT_H
@@ -696,6 +697,18 @@ QT_END_NAMESPACE
  MEMBER var：MEMBER指明了成员变量var即可读也可写的，相当于同时使用了READ和WRITE关键字。不定义READ，那么必须定义MEMBER；定义了MEMBER，仍可以使用READ或者WRITE控制访问接口。
 </code></pre>
 <p>​	</p>
+<h2><a class="header" href="#moc" id="moc">moc</a></h2>
+<blockquote>
+<p>moc - Meta-Object Compiler</p>
+</blockquote>
+<p>在将qt的代码提交给标准c++编译链前进行<code>宏展开</code></p>
+<h2><a class="header" href="#q_private_property" id="q_private_property">Q_PRIVATE_PROPERTY</a></h2>
+<p><a href="https://wiki.qt.io/Private_QObject_API">Private_QObject_API 维基</a></p>
+<blockquote>
+<p>This macro is used when you have a C++ class that is public that exposes a property whose type is not public</p>
+</blockquote>
+<h2><a class="header" href="#winform" id="winform">winform</a></h2>
+<p>next is C++/WinRT</p>
 
                     </main>
 
