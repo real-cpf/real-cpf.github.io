@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历1234</title>
+    <style>
+        a:link {
+            text-decoration: none;
+        }
+        .toxiang {
+            background-color: aliceblue;
+            color: blue;
+            font-size: xx-large;
+            text-align: center;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            float: left;
+            width: 150px;
+            height: 70px;
+            margin-left: 50px;
+            margin-top: 50px;
+            cursor: pointer;
+            border: 3px solid green;
+            border-top-left-radius: 30px;   
+            border-top-right-radius: 30px;  
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        .toxiang:hover{
+            border-color:  red;
+            border-style: dotted;
+        }
+    </style>
+    <script src="./js/html2canvas.min.js"></script>
+    <script>
+        window.onload=()=>{
+            // let s=new String(window.location.protocol)
+            // if(!s.includes("https")){
+            //     window.location.href=new String(window.location.href).replace('http','https')
+            // }
+            document.querySelectorAll('.openit').forEach(e=>{
+                e.addEventListener('click',function(){
+                    let h = new String(e.hash).replace('#','').trim()
+                    if(h.endsWith('@')){
+                        document.querySelector('#mdbook').src = `./${h.replace('@','')}.html`
+                    }else{
+                        document.querySelector('#mdbook').src = `./${h}/docs/index.html`
+                    }
+                    
+                })
+            })
+        }
+    </script>
+</head>
+<body>
+    
+<div>
+  <div style="background-color: rgb(215, 255, 196);width: 250px;height: 750px;float: left;">
+    <!-- <div class="toxiang">
+        <a class="openit" href="#ainterview-v3@" >简历</a>
+       </div> -->
+        <div class="toxiang">
+        <a class="openit" href="#backstage" >backstage </a>
+       </div>
+       <div class="toxiang">
+        <a class="openit" href="#midware" >midway</a>
+       </div>
+        <div class="toxiang">
+            <a class="openit" href="#pcwork" >PC</a>
+        </div>
+        <div class="toxiang">
+            <a class="openit" href="#web" >web</a>
+        </div>
+        <div class="toxiang" style="color: red;height: 40px;display: none;" >
+            <a  href="./pdf/ainterview-pdf.pdf" download="刘佳成的简历.pdf" >简历</a>
+           </div>
+  </div>
+   
+    <div style="float: left;">
+        
+        <iframe id="mdbook" src="./ter.html" frameborder="1" width="700px" height="750px"></iframe>
+        <!-- <iframe id="mdbook" src="./ainterview-v3.html" frameborder="1" width="700px" height="750px"></iframe> -->
+    </div>
+    <!-- <div style="float: right;height: 750px;">
+        <div style="float: left;">
+            <button onclick="saveContent()">
+                保存右侧到本地>
+            </button>
+        </div>
+        <div style="float:left">
+            <textarea name="" id="save_content" cols="50" rows="47"></textarea>
+        </div>
+    </div> -->
+</div>
+
+<div style="position:absolute ;bottom: 10px;width: 1200px;height: 20px;text-align: center;align-items: center;justify-content: center;">
+    
+    <a href="http://beian.miit.gov.cn/" class="">冀ICP备2021015999号</a>
+</div>
+<script>
+    function saveContent(){
+        let content=document.querySelector('#save_content').value
+        if(!content){
+            alert('请输入内容后进行保存！')
+            return;
+        }
+        
+        let ele = document.createElement('a');
+        let date = new Date();
+        ele.download = `保存的内容-[realcpf.cn]-[${date.getFullYear()}-${date.getMonth()}-${date.getDate()}].txt`;
+        ele.style.display = "none";
+        let blob = new Blob([content]);
+        ele.href = URL.createObjectURL(blob);
+        document.body.appendChild(ele);
+        ele.click();
+        document.body.removeChild(ele);
+    }
+    function saveImg(){
+        // TODO 截图iframe
+        let date = new Date();
+        let imgName= `保存的内容-[realcpf.cn]-[${date.getFullYear()}-${date.getMonth()}-${date.getDate()}].jpeg`;
+        html2canvas(document.querySelector('#mdbook')).then(canvas=>{
+            dataURIToBlob(imgName,canvas.toDataURL('image/jpeg', 1.0),doDownload)
+        });
+    }
+    function dataURIToBlob(imgName, dataURI, doDownload) {
+        console.log(dataURI)
+        var binStr = atob(dataURI.split(',')[1]),
+            len = binStr.length,
+            arr = new Uint8Array(len);
+        for (var i = 0; i < len; i++) {
+            arr[i] = binStr.charCodeAt(i);
+        }
+        doDownload(imgName, new Blob([arr]));
+    }
+    function doDownload(imgName, blob) {
+        console.log(blob)
+        let ele = document.createElement('a');
+        ele.download=imgName;
+        ele.style.display = "none";
+        ele.href = URL.createObjectURL(blob);
+        document.body.appendChild(ele);
+        ele.click();
+        document.body.removeChild(ele);
+    };
+</script>
+</body>
+</html>
